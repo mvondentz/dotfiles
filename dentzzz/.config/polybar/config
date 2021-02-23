@@ -1,0 +1,466 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+
+include-file = ~/.config/polybar/colors.ini
+
+
+[configs]
+height = 15px
+radius = 7
+
+[colors]
+background = ${color.primary}
+background-alt = #444
+foreground = ${color.secondary}
+foreground-alt = #555
+black       = ${color.black}
+red         = ${color.red}
+green       = ${xrdb:Polybar.color2}
+yellow      = ${xrdb:Polybar.color3}
+blue        = ${xrdb:Polybar.color4}
+magenta     = ${xrdb:Polybar.color5}
+cyan        = ${xrdb:Polybar.color6}
+white       = ${xrdb:Polybar.color7}
+
+;; ========================== WORKSPACES BAR =====================
+
+[bar/workspaces]
+width = 9%
+height = ${configs.height}
+offset-x = 10px 
+offset-y = 5px
+radius = ${configs.radius}
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-top = 2
+padding-bottom= 2
+padding-left = 2
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = FiraCode Nerd Font:pixelsize=8;1
+font-1 = Material Design Icons:pixelsize=16:style:Regular;2
+font-2 = Material Design Icons:pixelsize=50:style:Regular;3
+font-3 = BreezeSans:pixelsize=16:style=Bold;-10
+
+modules-left = app
+modules-right = terminal browser
+modules-center = i3
+
+wm-restack = i3
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = default
+
+
+;; =================== TITLE BAR ========================
+ 
+[bar/title]
+width = 35%
+height =${configs.height} 
+offset-x = 30%
+offset-y = 5px
+radius = ${configs.radius}
+fixed-center = true
+ 
+background = ${colors.background}
+foreground = ${colors.foreground}
+ 
+padding-top = 3
+padding-bottom = 0
+padding-left = 2
+padding-right = 0
+ 
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = Anonymous Pro:pixelsize=8;1
+font-1 =  FiraCode Nerd Font:pixelsize=8;1
+font-2 = Material Design Icons:pixelsize=50:style:Regular;3 
+#font-3 = Anonymous Pro:pixelsize=8;1
+#font-0 = FiraCode Nerd Font:pixelsize=8;1
+#font-1 = Material Design Icons:pixelsize=16:style:Regular;2
+#font-3 = BreezeSans:pixelsize=16:style=Bold;-10
+
+modules-center = title
+ 
+wm-restack = i3
+override-redirect = true
+ 
+cursor-click = pointer
+cursor-scroll = default
+
+
+;; =================== MUSIC BAR ========================
+
+[bar/music]
+width = 15%
+height =${configs.height} 
+offset-x = 10%
+offset-y = 5px
+radius = ${configs.radius}
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-top = 3
+padding-bottom = 0
+padding-left = 2
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = Anonymous Pro:pixelsize=8;1
+font-1 =  FiraCode Nerd Font:pixelsize=8;1
+font-2 = Material Design Icons:pixelsize=50:style:Regular;3
+#font-3 = Anonymous Pro:pixelsize=8;1
+#font-0 = FiraCode Nerd Font:pixelsize=8;1
+#font-1 = Material Design Icons:pixelsize=16:style:Regular;2
+#font-3 = BreezeSans:pixelsize=16:style=Bold;-10
+
+
+modules-left = spotify
+
+wm-restack = i3
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = default
+
+
+;; =================== BAR STATUS =========================
+
+[bar/status]
+width = 16%
+height = ${configs.height}
+offset-x = 84%:-10
+offset-y = 5px
+radius = ${configs.radius}
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 0
+module-margin-right = 0
+
+#font-0 = BreezeSans:pixelsize=16:style=Bold;-10
+font-0 = Anonymous Pro:pixelsize=8;1
+font-1 =  FiraCode Nerd Font:pixelsize=8;1
+font-2 = Material Design Icons:pixelsize=10:style:Regular;2
+font-3 = FiraCode Nerd Font:pixelsize=8;10
+font-4 = FiraCode Nerd Font:pixelsize=8;-8
+
+modules-right = volume date 
+#modules-left = open
+
+wm-restack = i3
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = default
+
+tray-position = right
+tray-detached = false
+tray-maxsize = 11
+tray-transparent = false
+tray-background = ${colors.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 5
+tray-scale = 1.0
+
+
+;; ==================== BAR INFO ============================
+
+[bar/info]
+width = 10%
+height = ${configs.height}
+offset-x = 72%:-5
+offset-y = 5px
+radius = ${configs.radius}
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-left = 2
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+#Anonymous Pro
+font-0 = Anonymous Pro:pixelsize=8;1
+#font-1 = FiraCode Nerd Font:pixelsize=10;1
+font-2 = Material Design Icons:pixelsize=16:style:Regular;2
+font-3 = FiraCode Nerd Font:pixelsize=8;10
+font-4 = FiraCode Nerd Font:pixelsize=8;-8
+
+modules-center = cpu memory filesystem
+#modules-left = 
+
+wm-restack = i3
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = default
+
+
+;; =================== I3 MODULE ============================
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
+
+; focused = Active workspace on focused monitor
+label-focused = ""
+label-focused-padding = 1
+label-focused-font = 3
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = ""
+label-unfocused-padding = 1
+label-unfocused-font = 3
+
+; urgent = Workspace with urgency hint set
+label-urgent = ""
+label-urgent-foreground = ${colors.red}
+label-urgent-font = 3
+label-urgent-padding = 1
+
+
+;; ===================== MODULE OPEN APP =================
+
+[module/app]
+type = custom/text
+
+content = "%{T4} %{T-}"
+content-background = ${colors.background}
+content-foreground = ${colors.cyan}
+content-padding = 1
+content-font = 2
+
+click-left = rofi -show drun &
+
+
+;; ======================== TITLE ==========================
+
+[module/title]
+type = internal/xwindow
+ 
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format = <label>
+format-padding = 4
+ 
+label= "  %title%"
+label-maxlen = 120
+
+;; ======================== SPOTIFY =========================
+
+[module/spotify]
+#type = custom/script
+#exec = ~/.config/polybar/scripts/song.sh 2>/dev/null || echo "No player found"
+#format = "<label>  "
+#interval = 1
+#tail = true
+#format-prefix = "  "
+
+exec = python ~/.config/polybar/scripts/spotify_status.py -f '{artist} - {song}'
+type = custom/script
+interval = 1
+
+format-prefix = "%{T4}%{F#1db954}    %{F-}%{T-}"
+format = <label>
+format-underline = #1db954
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-padding = 1
+
+;; ===================== TOGGLE =============================
+
+[module/toggle]
+type = custom/script
+
+exec = ~/.config/polybar/scripts/toggle.sh
+interval = 0.2
+format = <label>
+format-foreground = ${colors.cyan}
+format-padding = 1
+label = %output%
+
+tail = true
+click-left = playerctl play-pause &
+
+
+;; ======================== PREV =============================
+
+[module/prev]
+type = custom/text
+
+content = "%{T4}%{T-}"
+content-foreground = ${colors.cyan}
+content-padding = 2
+content-font = 2
+
+click-left = playerctl previous &
+
+
+;; ======================== NEXT =============================
+
+[module/next]
+type = custom/text
+
+content = "%{T4} %{T-}"
+content-foreground = ${colors.cyan}
+content-padding = 2
+content-font = 2
+
+click-left = playerctl next &
+
+
+;; ======================= DATE ===============================
+
+[module/date]
+type = custom/script
+
+exec =  ~/.config/polybar/scripts/date.sh
+interval = 1
+tail = true
+
+;; ====================== POWERMENU ===========================
+
+[module/power-menu]
+type = custom/script
+
+exec = echo "  󰐥  "
+format-foreground = ${colors.red}
+click-left = ~/.config/polybar/scripts/powermenu.sh &
+
+
+;; ======================= UPDATES ============================
+
+[module/update]
+type = custom/script
+
+exec = ~/.config/polybar/scripts/updates.sh
+
+interval = 5
+
+tail =true
+
+click-left = ~/.config/polybar/scripts/lupdates &
+
+
+;; ======================= VOLUME ===============================
+
+[module/volume]
+type = internal/pulseaudio
+
+format = <label>
+
+label-volume = "󰎇%{T2}%percentage%%%{T-}  "
+
+label-muted = "󰎊  "
+label-muted-foreground = #607290
+
+
+;; ======================== CPU ================================
+
+[module/cpu]
+type = internal/cpu
+
+interval = 1
+format = <label>
+
+format-prefix = "CPU: " 
+label = "%{T2}%percentage%%%{T2}  "
+
+
+;; ======================== TEMPERATURE ========================
+
+[module/temperature]
+type = internal/temperature
+
+format = <label>
+format-prefix = "  "
+
+hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:07:00.0/hwmon/hwmon2/temp1_input
+
+label = "%{T2}%temperature-c%%{T-}  "
+
+
+;; ========================= MEMORY ===============================
+
+[module/memory]
+type = internal/memory
+
+interval = 2
+format-prefix = "MEM: "
+label = "%{T2}%percentage_used%%%{T-}  " 
+
+
+;; ========================= OPEN =================================
+
+[module/open]
+type = custom/script
+
+exec = echo "%{F#79e6f3}  %{F-}"
+
+click-left = ~/.config/polybar/scripts/open.sh &
+
+;; ========================= CLOSE =================================
+
+[module/close]
+type = custom/script
+
+exec = echo "%{F#f37f97} %{F-}"
+
+click-left = ~/.config/polybar/scripts/close.sh
+
+
+;; ========================= HOME =================================
+[module/filesystem]
+type = internal/fs
+ 
+mount-0 = /
+interval = 10
+ 
+format = <label>
+ 
+#format-prefix = "HOME:" 
+label-mounted = "HOME: %percentage_used%%"
+#label = "%{T2}%percentage_used%%%{T-}" 
+
+
+# vim:ft=dosini
