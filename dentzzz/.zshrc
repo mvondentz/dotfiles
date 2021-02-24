@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/dentzzz_/.oh-my-zsh
+export ZSH=/home/dentzzz/.oh-my-zsh
 
 #export TERM="xterm-256color"
 export EDITOR='vim'
