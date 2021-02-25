@@ -1,7 +1,7 @@
 set $mod Mod4
 set $alt Mod1
-set $coloract "#7ca857"
-set $colorin "#55733c"
+set $coloract "{color9}"
+set $colorin "{color3}"
 set $terminal urxvt
 set_from_resource $color15 i3wm.color15 "{color15}"
 set_from_resource $split i3wm.color10 "{color10}"
@@ -202,7 +202,7 @@ bindsym $mod+l exec --no-startup-id blurlock
 ## Mode System ##
 bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
+mode "$mode_system" {{
     bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
@@ -214,10 +214,10 @@ mode "$mode_system" {
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
     bindsym Escape mode "default"
-}
+}}
 
 bindsym $mod+r mode "resize"
-mode "resize" {
+mode "resize" {{
         # resize windows
         bindsym Right resize shrink width 10 px or 10 ppt
         bindsym Up resize grow height 10 px or 10 ppt
@@ -226,7 +226,7 @@ mode "resize" {
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
-}
+}}
 
 
 #####################

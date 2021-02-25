@@ -32,6 +32,7 @@ magenta     = ${xrdb:Polybar.color5}
 cyan        = ${xrdb:Polybar.color6}
 white       = ${xrdb:Polybar.color7}
 
+
 ;; ========================== WORKSPACES BAR =====================
 
 [bar/workspaces]
@@ -226,6 +227,54 @@ override-redirect = true
 
 cursor-click = pointer
 cursor-scroll = default
+
+
+;; ========================== MONITORS =====================
+; Use $ xrandr -q | grep " connected" | cut -d ' ' -f1
+
+[bar/workspaces-eDP1]
+inherit = bar/workspaces
+monitor = eDP-1
+
+[bar/workspaces-HDMI1]
+inherit = bar/workspaces
+monitor = HDMI-1
+
+
+[bar/title-eDP1]
+inherit = bar/title
+monitor = eDP-1
+
+[bar/title-HDMI1]
+inherit = bar/title
+monitor = HDMI-1
+
+
+[bar/music-eDP1]
+inherit = bar/music
+monitor = eDP-1
+
+[bar/music-HDMI1]
+inherit = bar/music
+monitor = HDMI-1
+
+
+[bar/status-eDP1]
+inherit = bar/status
+monitor = eDP-1
+
+[bar/status-HDMI1]
+inherit = bar/status
+monitor = HDMI-1
+
+
+[bar/info-eDP1]
+inherit = bar/info
+monitor = eDP-1
+
+[bar/info-HDMI1]
+inherit = bar/info
+monitor = HDMI-1
 
 
 ;; =================== I3 MODULE ============================
