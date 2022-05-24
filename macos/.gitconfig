@@ -1,0 +1,19 @@
+[alias]
+	up = !git fetch --all && git rebase origin/main
+[user]
+	signingkey = 5F0C70601E8B9C11
+	name = Mauricio Von Dentz
+	email = mauriciovondentz@gmail.com
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[ghq]
+	root = ~/code
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
