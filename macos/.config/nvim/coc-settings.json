@@ -44,5 +44,5 @@
         "json"
     ],
     "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
-    "go.goplsPath": "change this path"
+    "go.goplsPath": "/Users/mauricio.dentz/go/bin/gopls"
 }

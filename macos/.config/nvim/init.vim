@@ -86,6 +86,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
 
+Plug 'liuchengxu/vista.vim'
+
+Plug 'fatih/vim-go'
+
 if (has("nvim"))
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
@@ -187,6 +191,10 @@ nnoremap <leader>fe :CocCommand explorer <CR>
 "nnoremap <leader>eb :CocCommand explorer --preset buffer<CR>
 "nnoremap <leader>ec :CocCommand explorer --preset cocConfig<CR>
 
+
+" Vista
+nnoremap <leader>s :Vista coc <CR>
+
 " List all presets
 "nnoremap <leader>el :CocList explPresets
 
@@ -253,14 +261,14 @@ let g:go_doc_popup_window = 1
 let g:go_gopls_options = ['-remote=auto']
 
 " Disabling vim-go conflicts with coc-go
-"let g:go_gopls_enabled = 0
-"let g:go_code_completion_enabled = 0
-"let g:go_auto_sameids = 0
-"let g:go_fmt_autosave = 0
-"let g:go_def_mapping_enabled = 0
-"let g:go_diagnostics_enabled = 0
-"let g:go_echo_go_info = 0
-"let g:go_metalinter_enabled = 0
+let g:go_gopls_enabled = 1
+let g:go_code_completion_enabled = 0
+let g:go_auto_sameids = 0
+let g:go_fmt_autosave = 0
+let g:go_def_mapping_enabled = 0
+let g:go_diagnostics_enabled = 0
+let g:go_echo_go_info = 0
+let g:go_metalinter_enabled = 0
 
 
 " Airline """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -277,6 +285,18 @@ let g:ale_fixers = {
 \}
 
 let g:ale_fix_on_save = 1
+
+
+" vista """"""""
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+
 
 
 " Coc Explorer """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
