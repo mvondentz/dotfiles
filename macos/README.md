@@ -9,6 +9,10 @@
 - vim-plug (sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 - gcloud
+- zoom
+- spotify
+- logitech g hub
+- steelseries gg
 
 
 ### Brew
@@ -37,6 +41,9 @@ fisher install jethrokuan/z
 ```
 pip3 install pynvim
 ```
+
+defaults write -g InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 1
 
 ### Karabiner Keymaps
 ~/.config/karabiner/assets/complex_modifications/
