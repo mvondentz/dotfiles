@@ -15,6 +15,7 @@ alias la "ls -A"
 alias ll "exa -la -g --icons"
 alias lla "ll -a"
 alias g git
+alias v nvim
 command -qv nvim && alias vim nvim
 
 set -gx EDITOR nvim

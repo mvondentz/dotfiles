@@ -1,7 +1,7 @@
 [alias]
 	up = !git fetch --all && git rebase origin/main
 [user]
-	signingkey = 5F0C70601E8B9C11
+	signingkey = 60A9BE95105BA9F9
 	name = Mauricio Von Dentz
 	email = mauriciovondentz@gmail.com
 [gpg]
