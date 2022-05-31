@@ -19,7 +19,7 @@ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 ```
 brew tap homebrew/cask-fonts
 brew install --cask iterm2 karabiner-elements font-hack-nerd-font
-brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg
+brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspell mongodb/brew/libmongocrypt pkg-config numpy
 ```
 
 ### NPM
@@ -56,27 +56,27 @@ defaults write -g KeyRepeat -int 1
 	  "description": "Post Esc if Caps is tapped, Control if held.",
 	  "manipulators": [
         {
-    "type": "basic",
-    "from": {
-        "key_code": "left_control",
-        "modifiers": {
-            "optional": [
-                "any"
+            "type": "basic",
+            "from": {
+                "key_code": "left_control",
+                "modifiers": {
+                    "optional": [
+                        "any"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "left_control",
+                    "lazy": true
+                }
+            ],
+            "to_if_alone": [
+                {
+                    "key_code": "escape"
+                }
             ]
         }
-    },
-    "to": [
-        {
-            "key_code": "left_control",
-            "lazy": true
-        }
-    ],
-    "to_if_alone": [
-        {
-            "key_code": "escape"
-        }
-    ]
-}
 	  ]
 	}
   ]

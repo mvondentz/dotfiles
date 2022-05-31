@@ -8,6 +8,7 @@ if !1 | finish | endif
 " Global Sets """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set ttyfast          " Fast rendering
+set lazyredraw
 syntax on            " Enable syntax highlight
 set guicursor=       " Bold cursor
 set nu               " Enable line numbers
@@ -66,52 +67,42 @@ filetype indent on   " Load the indent file for the file type, if any
 call plug#begin()
 
 Plug 'morhetz/gruvbox'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'ryanoasis/vim-devicons'
-
-Plug 'sheerun/vim-polyglot'
-Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+Plug 'fatih/vim-go'
+
+Plug 'dense-analysis/ale'
 Plug 'honza/vim-snippets'
 
 Plug 'mbbill/undotree'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-treesitter/playground'
 
 Plug 'tpope/vim-fugitive'
-Plug 'zivyangll/git-blame.vim'
+Plug 'tpope/vim-rhubarb'
 
+Plug 'zivyangll/git-blame.vim'
 Plug 'liuchengxu/vista.vim'
 
-Plug 'fatih/vim-go'
 
 if (has("nvim"))
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
 endif
 
-
-Plug 'tpope/vim-rhubarb'
-Plug 'groenewege/vim-less', { 'for': 'less' }
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'folke/trouble.nvim'
 
 Plug 'ThePrimeagen/harpoon'
 
 call plug#end()
 
 lua << EOF
-  require("trouble").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
   require("harpoon").setup({})
   require('telescope').setup({
     defaults = {
@@ -193,7 +184,7 @@ nnoremap <leader>fe :CocCommand explorer <CR>
 
 
 " Vista
-nnoremap <leader>s :Vista coc <CR>
+nnoremap <leader>s :Vista!!<CR>
 
 " List all presets
 "nnoremap <leader>el :CocList explPresets
@@ -237,8 +228,9 @@ nnoremap <leader>ib :<C-u>call gitblame#echo()<CR>
 
 
 " vim-go """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:go_fmt_command = "gofmt"
+let g:go_fmt_command = "goimports"
 
+" highlights
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 0
 let g:go_highlight_functions = 1
@@ -255,9 +247,10 @@ let g:go_highlight_build_constraints = 0
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 let g:go_auto_type_info = 1
-"let g:go_list_type = "quickfix"
+let g:go_list_type = "quickfix"
 let g:go_doc_popup_window = 1
 
+" attach gopls
 let g:go_gopls_options = ['-remote=auto']
 
 " Disabling vim-go conflicts with coc-go
@@ -277,26 +270,20 @@ let g:airline_powerline_fonts = 1
 
 
 " ALE """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_linters = {
-\}
-
-let g:ale_fixers = {
-\   '*': ['trim_whitespace'],
-\}
-
+let g:ale_linters = {}
+let g:ale_fixers = {'*': ['trim_whitespace']}
 let g:ale_fix_on_save = 1
 
 
-" vista """"""""
+" VISTA """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
+let g:vista_default_executive = 'coc'
 
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-
-
 
 
 " Coc Explorer """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
