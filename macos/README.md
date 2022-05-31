@@ -42,8 +42,11 @@ fisher install jethrokuan/z
 pip3 install pynvim
 ```
 
+###  Keyrepeat
+```
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
+```
 
 ### Karabiner Keymaps
 ~/.config/karabiner/assets/complex_modifications/
