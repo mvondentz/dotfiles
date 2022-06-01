@@ -16,6 +16,8 @@ alias ll "exa -la -g --icons"
 alias lla "ll -a"
 alias g git
 alias v nvim
+alias c clear
+alias clera clear
 command -qv nvim && alias vim nvim
 
 set -gx EDITOR nvim
