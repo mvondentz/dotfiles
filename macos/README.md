@@ -19,7 +19,7 @@ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 ```
 brew tap homebrew/cask-fonts
 brew install --cask iterm2 karabiner-elements font-hack-nerd-font
-brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspell mongodb/brew/libmongocrypt pkg-config numpy
+brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspell mongodb/brew/libmongocrypt pkg-config numpy tmux
 ```
 
 ### NPM
@@ -35,6 +35,10 @@ pyenv install 3.9.2
 ### Fish
 ```
 fisher install jethrokuan/z
+
+fish_add_path /opt/homebrew/bin
+echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
+chsh -s /opt/homebrew/bin/fish
 ```
 
 ### PIP
