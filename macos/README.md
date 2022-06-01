@@ -27,6 +27,11 @@ brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspe
 npm install -g neovim
 ```
 
+### GO
+```
+go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
+```
+
 ### PY
 ```
 pyenv install 3.9.2
