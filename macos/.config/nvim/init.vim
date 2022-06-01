@@ -87,6 +87,8 @@ Plug 'nvim-treesitter/playground'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
+Plug 'airblade/vim-gitgutter'
+
 Plug 'zivyangll/git-blame.vim'
 Plug 'liuchengxu/vista.vim'
 
@@ -203,7 +205,6 @@ nnoremap <leader>q <cmd>lua require("harpoon.mark").rm_file()<CR>
 nnoremap <leader>r <cmd>lua require("harpoon.mark").add_file()<CR>
 
 if (has("nvim"))
-
     " Telescope """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -222,10 +223,11 @@ map <leader>d :bd<cr>
 "map <leader>v :cprevious<CR>
 "nnoremap <leader>c :cclose<CR>
 
-" GitBlame
-nnoremap <leader>ib :<C-u>call gitblame#echo()<CR>
-
-
+" Git remaps
+nnoremap <leader>ij :<C-u>call gitblame#echo()<CR>
+nnoremap <leader>in <Plug>(GitGutterNextHunk)
+nnoremap <leader>ib <Plug>(GitGutterPrevHunk)
+nnoremap <leader>ip <Plug>(GitGutterPreviewHunk)
 
 " vim-go """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:go_fmt_command = "goimports"
