@@ -105,7 +105,11 @@ Plug 'ThePrimeagen/harpoon'
 call plug#end()
 
 lua << EOF
-  require("harpoon").setup({})
+  require("harpoon").setup({
+      menu = {
+          width = vim.api.nvim_win_get_width(0) - 4,
+      }
+  })
   require('telescope').setup({
     defaults = {
         mappings = {
@@ -229,6 +233,12 @@ nnoremap <leader>in <Plug>(GitGutterNextHunk)
 nnoremap <leader>ib <Plug>(GitGutterPrevHunk)
 nnoremap <leader>ip <Plug>(GitGutterPreviewHunk)
 
+" Rezise maps
+nnoremap + :res +5<CR>
+nnoremap _ :res -5<CR>
+nnoremap < :vertical resize +5<CR>
+nnoremap > :vertical resize -5<CR>
+
 " vim-go """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:go_fmt_command = "goimports"
 
@@ -248,8 +258,8 @@ let g:go_highlight_build_constraints = 0
 "let g:syntastic_go_checkers = ['golint', 'govet']
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
-let g:go_auto_type_info = 1
-let g:go_list_type = "quickfix"
+let g:go_auto_type_info = 0
+"let g:go_list_type = "quickfix"
 let g:go_doc_popup_window = 1
 
 " attach gopls
