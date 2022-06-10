@@ -219,6 +219,8 @@ nnoremap <leader>s :Vista!!<CR>
 "noremap <leader>Y +y
 "noremap <leader>P "+p
 
+" amazing yank to keep cursor
+vmap y ygv<Esc>
 
 " harpoon
 nnoremap <leader>w <cmd>lua require("harpoon.ui").nav_prev()<CR>
