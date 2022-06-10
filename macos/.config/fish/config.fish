@@ -14,11 +14,13 @@ alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "exa -la -g --icons"
 alias lla "ll -a"
+alias e exit
 
 alias v nvim
 alias c clear
 alias clera clear
 
+# Git Alias
 alias g git
 alias gs "g status"
 alias gd "g diff"
@@ -26,6 +28,7 @@ alias gp "g push"
 alias gl "g log --oneline"
 alias gc "g checkout"
 alias gp "g push"
+alias gtree "g diff-tree --no-commit-id --name-only -r"
 
 command -qv nvim && alias vim nvim
 

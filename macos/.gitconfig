@@ -1,5 +1,6 @@
 [alias]
-	up = !git fetch --all && git rebase origin/main
+    #up = !git fetch --all && git rebase origin/main
+    up = !git pull origin main && git rebase main
 [user]
 	name = Mauricio Von Dentz
 	email = mauriciovondentz@gmail.com

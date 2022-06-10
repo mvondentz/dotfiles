@@ -73,7 +73,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
-Plug 'fatih/vim-go'
+"Plug 'fatih/vim-go'
 
 Plug 'dense-analysis/ale'
 Plug 'honza/vim-snippets'
@@ -92,6 +92,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'zivyangll/git-blame.vim'
 Plug 'liuchengxu/vista.vim'
 
+"Plug 'vim-test/vim-test'
+Plug 'sebdah/vim-delve'
 
 if (has("nvim"))
     Plug 'nvim-lua/plenary.nvim'
@@ -101,15 +103,11 @@ endif
 Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'ThePrimeagen/harpoon'
+Plug 'ThePrimeagen/git-worktree.nvim'
 
 call plug#end()
 
 lua << EOF
-  require("harpoon").setup({
-      menu = {
-          width = vim.api.nvim_win_get_width(0) - 4,
-      }
-  })
   require('telescope').setup({
     defaults = {
         mappings = {
@@ -123,6 +121,12 @@ lua << EOF
     },
   })
   require("telescope").load_extension('harpoon')
+  require("telescope").load_extension("git_worktree")
+  require("harpoon").setup({
+      menu = {
+          width = vim.api.nvim_win_get_width(0) - 4,
+      }
+  })
 EOF
 
 
@@ -160,18 +164,32 @@ autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.org
 "autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
 
 "autocmd FileType go nmap <leader>gr  <Plug>(go-run)
-autocmd FileType go nmap <leader>gb  <Plug>(go-build)
-autocmd FileType go nmap <leader>gt  <Plug>(go-test)
-autocmd FileType go nmap <Leader>gc <Plug>(go-coverage-toggle)
+"autocmd FileType go nmap <leader>gb  <Plug>(go-build)
+"autocmd FileType go nmap <leader>gt  <Plug>(go-test)
+"autocmd FileType go nmap <Leader>gc <Plug>(go-coverage-toggle)
 "au FileType go nmap <Leader>gr <Plug>(go-rename)
 "au FileType go nmap <Leader>gi <Plug>(go-implements)
 "au FileType go nmap <Leader>gh <Plug>(go-info)
-au FileType go nmap <Leader>gds <Plug>(go-def-split)
-au FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
+"au FileType go nmap <Leader>gds <Plug>(go-def-split)
+"au FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
 
+"Delve Remaps
+"q = quit
+"n = next
+"b <line> = add brk to line
+"c = continue (next line)
+"r = restart
+"s = step
+"so = step out
+au FileType go nnoremap <Leader>ha :DlvToggleBreakpoint <CR>
+au FileType go nnoremap <Leader>hr :DlvTest <CR>
+au FileType go nnoremap <Leader>hc :DlvClearAll <CR>
 
-
-
+au FileType go vnoremap <leader>ht y:call IntegrationTest(expand('%:p'), @")<Enter>
+function! IntegrationTest(path,params)
+    new
+    silent! exec "r!t '" . a:path . "' " . a:params
+endfunction
 
 " Remaps """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -215,6 +233,9 @@ if (has("nvim"))
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
     nnoremap <leader>fm <cmd>Telescope harpoon marks<cr>
+
+    nnoremap <leader>fc <cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
+    nnoremap <leader>fs <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 endif
 
 " Buffers navigation
@@ -239,6 +260,9 @@ nnoremap _ :res -5<CR>
 nnoremap < :vertical resize +5<CR>
 nnoremap > :vertical resize -5<CR>
 
+
+
+
 " vim-go """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:go_fmt_command = "goimports"
 
@@ -258,22 +282,22 @@ let g:go_highlight_build_constraints = 0
 "let g:syntastic_go_checkers = ['golint', 'govet']
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
-let g:go_auto_type_info = 0
+"let g:go_auto_type_info = 0
 "let g:go_list_type = "quickfix"
-let g:go_doc_popup_window = 1
+"let g:go_doc_popup_window = 1
+"
+" Disabling vim-go conflicts with coc-go
+"let g:go_gopls_enabled = 0
+"let g:go_code_completion_enabled = 0
+"let g:go_auto_sameids = 0
+"let g:go_fmt_autosave = 0
+"let g:go_def_mapping_enabled = 0
+"let g:go_diagnostics_enabled = 0
+"let g:go_echo_go_info = 0
+"let g:go_metalinter_enabled = 0
 
 " attach gopls
-let g:go_gopls_options = ['-remote=auto']
-
-" Disabling vim-go conflicts with coc-go
-let g:go_gopls_enabled = 1
-let g:go_code_completion_enabled = 0
-let g:go_auto_sameids = 0
-let g:go_fmt_autosave = 0
-let g:go_def_mapping_enabled = 0
-let g:go_diagnostics_enabled = 0
-let g:go_echo_go_info = 0
-let g:go_metalinter_enabled = 0
+"let g:go_gopls_options = ['-remote=auto']
 
 
 " Airline """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
