@@ -59,10 +59,6 @@ filetype plugin on   " Load the plugin file for the file type, if any
 filetype indent on   " Load the indent file for the file type, if any
 
 
-
-
-
-
 " Plugins """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
 
@@ -92,7 +88,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'zivyangll/git-blame.vim'
 Plug 'liuchengxu/vista.vim'
 
-"Plug 'vim-test/vim-test'
 Plug 'sebdah/vim-delve'
 
 if (has("nvim"))
@@ -124,7 +119,7 @@ lua << EOF
   require("telescope").load_extension("git_worktree")
   require("harpoon").setup({
       menu = {
-          width = vim.api.nvim_win_get_width(0) - 4,
+          width = vim.api.nvim_win_get_width(0) - 2,
       }
   })
 EOF
@@ -137,11 +132,6 @@ colorscheme gruvbox
 let g:airline_theme = 'gruvbox'
 
 set cursorline
-"set cursorcolumn
-
-" Set cursor line color on visual mode
-"highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
-"highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
 augroup BgHighlight
   autocmd!
@@ -154,24 +144,8 @@ if &term =~ "screen"
   autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
 endif
 
-
-
-
 " Autocmd """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
-"autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
-"autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
-"autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
-
-"autocmd FileType go nmap <leader>gr  <Plug>(go-run)
-"autocmd FileType go nmap <leader>gb  <Plug>(go-build)
-"autocmd FileType go nmap <leader>gt  <Plug>(go-test)
-"autocmd FileType go nmap <Leader>gc <Plug>(go-coverage-toggle)
-"au FileType go nmap <Leader>gr <Plug>(go-rename)
-"au FileType go nmap <Leader>gi <Plug>(go-implements)
-"au FileType go nmap <Leader>gh <Plug>(go-info)
-"au FileType go nmap <Leader>gds <Plug>(go-def-split)
-"au FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
 
 "Delve Remaps
 "q = quit
@@ -185,7 +159,9 @@ au FileType go nnoremap <Leader>ha :DlvToggleBreakpoint <CR>
 au FileType go nnoremap <Leader>hr :DlvTest <CR>
 au FileType go nnoremap <Leader>hc :DlvClearAll <CR>
 
-au FileType go vnoremap <leader>ht y:call IntegrationTest(expand('%:p'), @")<Enter>
+" Integration tests
+"au FileType go vnoremap <leader>ht y:call IntegrationTest(expand('%:p'), @")<Enter>
+au FileType go nnoremap <leader>ht :terminal t %:p
 function! IntegrationTest(path,params)
     new
     silent! exec "r!t '" . a:path . "' " . a:params
@@ -195,23 +171,11 @@ endfunction
 
 let mapleader = ";"
 
-"Go references
-"nnoremap <leader>gr :GoReferrers <CR>
-
-":nnoremap <leader>e :CocCommand explorer<CR>
-
 " Use preset argument to open it
-"nnoremap <leader>ev :CocCommand explorer --preset .vim<CR>
 nnoremap <leader>fe :CocCommand explorer <CR>
-"nnoremap <leader>eb :CocCommand explorer --preset buffer<CR>
-"nnoremap <leader>ec :CocCommand explorer --preset cocConfig<CR>
-
 
 " Vista
 nnoremap <leader>s :Vista!!<CR>
-
-" List all presets
-"nnoremap <leader>el :CocList explPresets
 
 " Clipboard yanks
 "noremap <leader>y "*y
@@ -245,10 +209,6 @@ map <leader>n :bn<cr>
 map <leader>b :bp<cr>
 map <leader>d :bd<cr>
 
-" c navigations
-"map <leader>b :cnext<CR>
-"map <leader>v :cprevious<CR>
-"nnoremap <leader>c :cclose<CR>
 
 " Git remaps
 nnoremap <leader>ij :<C-u>call gitblame#echo()<CR>
@@ -263,8 +223,6 @@ nnoremap < :vertical resize +5<CR>
 nnoremap > :vertical resize -5<CR>
 
 
-
-
 " vim-go """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:go_fmt_command = "goimports"
 
@@ -276,18 +234,6 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 0
 
-"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-"let g:go_metalinter_autosave = 1
-"let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-"let g:go_metalinter_deadline = "5s"
-
-"let g:syntastic_go_checkers = ['golint', 'govet']
-"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
-"let g:go_auto_type_info = 0
-"let g:go_list_type = "quickfix"
-"let g:go_doc_popup_window = 1
-"
 " Disabling vim-go conflicts with coc-go
 "let g:go_gopls_enabled = 0
 "let g:go_code_completion_enabled = 0
@@ -297,8 +243,6 @@ let g:go_highlight_build_constraints = 0
 "let g:go_diagnostics_enabled = 0
 "let g:go_echo_go_info = 0
 "let g:go_metalinter_enabled = 0
-
-" attach gopls
 "let g:go_gopls_options = ['-remote=auto']
 
 
