@@ -47,6 +47,7 @@ set autowrite        "
 set mouse=a          " Enable mouse support
 set ai               " auto ident
 set si               " smart ident
+set scl=yes          " gutter bar
 
 if has('nvim')
     set inccommand=split
@@ -62,7 +63,9 @@ filetype indent on   " Load the indent file for the file type, if any
 " Plugins """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
 
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
+Plug 'ghifarit53/tokyonight-vim'
+
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'vim-airline/vim-airline'
@@ -128,8 +131,12 @@ EOF
 " Themes """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termguicolors
 
-colorscheme gruvbox
-let g:airline_theme = 'gruvbox'
+"colorscheme gruvbox
+"let g:airline_theme = 'gruvbox'
+
+colorscheme tokyonight
+let g:tokyonight_enable_italic = 1
+let g:airline_theme = "tokyonight"
 
 set cursorline
 
@@ -160,7 +167,6 @@ au FileType go nnoremap <Leader>hr :DlvTest <CR>
 au FileType go nnoremap <Leader>hc :DlvClearAll <CR>
 
 " Integration tests
-"au FileType go vnoremap <leader>ht y:call IntegrationTest(expand('%:p'), @")<Enter>
 au FileType go nnoremap <leader>ht :terminal t %:p
 function! IntegrationTest(path,params)
     new
@@ -176,6 +182,9 @@ nnoremap <leader>fe :CocCommand explorer <CR>
 
 " Vista
 nnoremap <leader>s :Vista!!<CR>
+
+" esc to exit terminal
+tnoremap <Esc> <C-\><C-n>
 
 " Clipboard yanks
 "noremap <leader>y "*y

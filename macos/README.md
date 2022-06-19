@@ -57,6 +57,16 @@ defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
 ```
 
+### TMUX
+```
+# tmux-plugin
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Themes
+git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
+```
+
+
 ### Karabiner Keymaps
 ~/.config/karabiner/assets/complex_modifications/
 
