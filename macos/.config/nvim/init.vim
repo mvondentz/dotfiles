@@ -47,7 +47,7 @@ set autowrite        "
 set mouse=a          " Enable mouse support
 set ai               " auto ident
 set si               " smart ident
-set scl=yes          " gutter bar
+set scl          " gutter bar
 
 if has('nvim')
     set inccommand=split
