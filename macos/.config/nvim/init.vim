@@ -195,6 +195,12 @@ tnoremap <Esc> <C-\><C-n>
 " amazing yank to keep cursor
 vmap y ygv<Esc>
 
+" better paste
+nnoremap p "0p
+nnoremap P "0P
+xnoremap p "0p
+xnoremap P "0P
+
 " harpoon
 nnoremap <leader>w <cmd>lua require("harpoon.ui").nav_prev()<CR>
 nnoremap <leader>e <cmd>lua require("harpoon.ui").nav_next()<CR>
