@@ -2,7 +2,7 @@
 - Alfred
 - 1password
 - Hidden Bar
-- Chrome
+- Bravo
 - Homebrew
 - HackerFonts (https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
 - pip (curl https://bootstrap.pypa.io/get-pip.py | python3)
@@ -13,13 +13,14 @@ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 - spotify
 - logitech g hub
 - steelseries gg
+- Memory
 
 
 ### Brew
 ```
 brew tap homebrew/cask-fonts
 brew install --cask iterm2 karabiner-elements font-hack-nerd-font docker
-brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspell mongodb/brew/libmongocrypt pkg-config numpy tmux jq
+brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspell mongodb/brew/libmongocrypt pkg-config numpy tmux jq mongocli mongodb-community
 ```
 
 ### NPM

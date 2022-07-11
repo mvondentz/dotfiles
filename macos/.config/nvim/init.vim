@@ -48,12 +48,9 @@ set mouse=a          " Enable mouse support
 set ai               " auto ident
 set si               " smart ident
 set scl          " gutter bar
-
-if has('nvim')
-    set inccommand=split
-endif
-
+set inccommand=split
 set clipboard=unnamedplus "macos copy
+set shiftround
 
 filetype on          " Detect and set the filetype option and trigger the FileType Event
 filetype plugin on   " Load the plugin file for the file type, if any
@@ -93,36 +90,38 @@ Plug 'liuchengxu/vista.vim'
 
 Plug 'sebdah/vim-delve'
 
-if (has("nvim"))
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-endif
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/git-worktree.nvim'
 
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
+
 call plug#end()
 
 lua << EOF
-  require('telescope').setup({
-    defaults = {
-        mappings = {
-            n = { -- delete buffer in list view
-    	        ['<c-d>'] = require('telescope.actions').delete_buffer
-            },
-            i = {
-                ['<c-d>'] = require('telescope.actions').delete_buffer
-            }
+require('telescope').setup({
+defaults = {
+    mappings = {
+        n = { -- delete buffer in list view
+        ['<c-d>'] = require('telescope.actions').delete_buffer
+        },
+    i = {
+        ['<c-d>'] = require('telescope.actions').delete_buffer
         }
-    },
+    }
+},
   })
   require("telescope").load_extension('harpoon')
   require("telescope").load_extension("git_worktree")
   require("harpoon").setup({
-      menu = {
-          width = vim.api.nvim_win_get_width(0) - 2,
+  menu = {
+      width = vim.api.nvim_win_get_width(0) - 2,
       }
   })
 EOF
@@ -141,14 +140,14 @@ let g:airline_theme = "tokyonight"
 set cursorline
 
 augroup BgHighlight
-  autocmd!
-  autocmd WinEnter * set cul
-  autocmd WinLeave * set nocul
+    autocmd!
+    autocmd WinEnter * set cul
+    autocmd WinLeave * set nocul
 augroup END
 
 if &term =~ "screen"
-  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
-  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
+    autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
+    autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
 endif
 
 " Autocmd """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -195,23 +194,25 @@ tnoremap <Esc> <C-\><C-n>
 " amazing yank to keep cursor
 vmap y ygv<Esc>
 
+" New Line
+nmap <leader>a o<Esc>
+nmap <leader>A O<Esc>
+
 " harpoon
 nnoremap <leader>w <cmd>lua require("harpoon.ui").nav_prev()<CR>
 nnoremap <leader>e <cmd>lua require("harpoon.ui").nav_next()<CR>
 nnoremap <leader>q <cmd>lua require("harpoon.mark").rm_file()<CR>
 nnoremap <leader>r <cmd>lua require("harpoon.mark").add_file()<CR>
 
-if (has("nvim"))
-    " Telescope """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    nnoremap <leader>ff <cmd>Telescope find_files<cr>
-    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-    nnoremap <leader>fb <cmd>Telescope buffers<cr>
-    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-    nnoremap <leader>fm <cmd>Telescope harpoon marks<cr>
+" Telescope """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fm <cmd>Telescope harpoon marks<cr>
 
-    nnoremap <leader>fc <cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
-    nnoremap <leader>fs <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
-endif
+nnoremap <leader>fc <cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
+nnoremap <leader>fs <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 
 " Buffers navigation
 map <leader>n :bn<cr>
@@ -268,7 +269,7 @@ let g:ale_fix_on_save = 1
 
 " VISTA """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
+    return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
@@ -277,51 +278,60 @@ let g:vista_default_executive = 'coc'
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 
+" dadbod """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:dbs = {
+            \ 'testprod_entities': 'mongodb://user:pass@localhost:27022/entities?authSource=admin',
+            \ 'testprod_events': 'mongodb://user:pass@localhost:27022/events?authSource=admin',
+            \ 'prod_entities': 'mongodb://localhost:27023/entities?readPreference=secondaryPreferred&serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1',
+            \ 'prod_events': 'mongodb://localhost:27023/events?readPreference=secondaryPreferred&serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1',
+            \ }
+
+
 " Coc Explorer """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:coc_explorer_global_presets = {
-\   '.vim': {
-\     'root-uri': '~/.vim',
-\   },
-\   'cocConfig': {
-\      'root-uri': '~/.config/coc',
-\   },
-\   'tab': {
-\     'position': 'tab',
-\     'quit-on-open': v:true,
-\   },
-\   'tab:$': {
-\     'position': 'tab:$',
-\     'quit-on-open': v:true,
-\   },
-\   'floating': {
-\     'position': 'floating',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingTop': {
-\     'position': 'floating',
-\     'floating-position': 'center-top',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingLeftside': {
-\     'position': 'floating',
-\     'floating-position': 'left-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingRightside': {
-\     'position': 'floating',
-\     'floating-position': 'right-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'simplify': {
-\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   },
-\   'buffer': {
-\     'sources': [{'name': 'buffer', 'expand': v:true}]
-\   },
-\ }
+            \   '.vim': {
+                \     'root-uri': '~/.vim',
+                \   },
+                \   'cocConfig': {
+                    \      'root-uri': '~/.config/coc',
+                    \   },
+                    \   'tab': {
+                        \     'position': 'tab',
+                        \     'quit-on-open': v:true,
+                        \   },
+                        \   'tab:$': {
+                            \     'position': 'tab:$',
+                            \     'quit-on-open': v:true,
+                            \   },
+                            \   'floating': {
+                                \     'position': 'floating',
+                                \     'open-action-strategy': 'sourceWindow',
+                                \   },
+                                \   'floatingTop': {
+                                    \     'position': 'floating',
+                                    \     'floating-position': 'center-top',
+                                    \     'open-action-strategy': 'sourceWindow',
+                                    \   },
+                                    \   'floatingLeftside': {
+                                        \     'position': 'floating',
+                                        \     'floating-position': 'left-center',
+                                        \     'floating-width': 50,
+                                        \     'open-action-strategy': 'sourceWindow',
+                                        \   },
+                                        \   'floatingRightside': {
+                                            \     'position': 'floating',
+                                            \     'floating-position': 'right-center',
+                                            \     'floating-width': 50,
+                                            \     'open-action-strategy': 'sourceWindow',
+                                            \   },
+                                            \   'simplify': {
+                                                \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+                                                \   },
+                                                \   'buffer': {
+                                                    \     'sources': [{'name': 'buffer', 'expand': v:true}]
+                                                    \   },
+                                                    \ }
 
 
 " COC """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -353,37 +363,37 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
+    " Recently vim can merge signcolumn and number column into one
+    set signcolumn=number
 else
-  set signcolumn=yes
+    set signcolumn=yes
 endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ CheckBackspace() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ CheckBackspace() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+    inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -400,11 +410,11 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
+    if CocAction('hasProvider', 'hover')
+        call CocActionAsync('doHover')
+    else
+        call feedkeys('K', 'in')
+    endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
@@ -421,20 +431,20 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+" nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -454,12 +464,12 @@ omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+    vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
 " Use CTRL-S for selections ranges.
