@@ -95,12 +95,14 @@ Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'kyazdani42/nvim-web-devicons'
 
-Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/git-worktree.nvim'
 
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
+
+Plug 'alan-w-255/telescope-mru.nvim'
+Plug 'yegappan/mru'
 
 call plug#end()
 
@@ -117,13 +119,8 @@ defaults = {
     }
 },
   })
-  require("telescope").load_extension('harpoon')
+  require("telescope").load_extension('mru')
   require("telescope").load_extension("git_worktree")
-  require("harpoon").setup({
-  menu = {
-      width = vim.api.nvim_win_get_width(0) - 2,
-      }
-  })
 EOF
 
 
@@ -176,20 +173,11 @@ endfunction
 
 let mapleader = ";"
 
-" Use preset argument to open it
-nnoremap <leader>fe :CocCommand explorer <CR>
-
 " Vista
 nnoremap <leader>s :Vista!!<CR>
 
 " esc to exit terminal
 tnoremap <Esc> <C-\><C-n>
-
-" Clipboard yanks
-"noremap <leader>y "*y
-"noremap <leader>p "*p
-"noremap <leader>Y +y
-"noremap <leader>P "+p
 
 " amazing yank to keep cursor
 vmap y ygv<Esc>
@@ -198,26 +186,24 @@ vmap y ygv<Esc>
 nmap <leader>a o<Esc>
 nmap <leader>A O<Esc>
 
-" harpoon
-nnoremap <leader>w <cmd>lua require("harpoon.ui").nav_prev()<CR>
-nnoremap <leader>e <cmd>lua require("harpoon.ui").nav_next()<CR>
-nnoremap <leader>q <cmd>lua require("harpoon.mark").rm_file()<CR>
-nnoremap <leader>r <cmd>lua require("harpoon.mark").add_file()<CR>
-
 " Telescope """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fm <cmd>Telescope harpoon marks<cr>
-
 nnoremap <leader>fc <cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
 nnoremap <leader>fs <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+nnoremap <leader>fr <cmd>Telescope mru<cr>
+nnoremap <leader>fe :CocCommand explorer <CR>
 
 " Buffers navigation
 map <leader>n :bn<cr>
 map <leader>b :bp<cr>
-map <leader>d :bd<cr>
+
+map <leader>dd :bd<cr>
+command BufOnly silent! execute "%bd|e#|bd#"
+map <leader>da :BufOnly<cr>
 
 
 " Git remaps
@@ -231,6 +217,12 @@ nnoremap + :res +5<CR>
 nnoremap _ :res -5<CR>
 nnoremap < :vertical resize +5<CR>
 nnoremap > :vertical resize -5<CR>
+
+" vim navigation while in insert mode
+inoremap <c-j> <down>
+inoremap <c-h> <left>
+inoremap <c-k> <up>
+inoremap <c-l> <right>
 
 
 " vim-go """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -336,7 +328,7 @@ let g:coc_explorer_global_presets = {
 
 " COC """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:coc_global_extensions = ['coc-go', 'coc-json', 'coc-explorer', 'coc-pairs']
+let g:coc_global_extensions = ['coc-go', 'coc-json', 'coc-explorer']
 
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some

@@ -26,7 +26,7 @@ alias clera clear
 # Git Alias
 alias g git
 alias gs "g status"
-alias gd "batdiff"
+alias gd "g diff"
 alias gp "g push"
 alias gl "g log --oneline"
 alias gc "g checkout"
