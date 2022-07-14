@@ -1,4 +1,4 @@
-set fish_greeting ""
+set fish_greeting "Remember to breathe"
 
 set -gx TERM xterm-256color
 
@@ -15,15 +15,18 @@ alias la "ls -A"
 alias ll "exa -la -g --icons"
 alias lla "ll -a"
 alias e exit
+alias q exit
 
 alias v nvim
 alias c clear
 alias clera clear
 
+#alias fd "fd … -X bat"
+
 # Git Alias
 alias g git
 alias gs "g status"
-alias gd "g diff"
+alias gd "batdiff"
 alias gp "g push"
 alias gl "g log --oneline"
 alias gc "g checkout"
@@ -31,6 +34,10 @@ alias gp "g push"
 alias gtree "g diff-tree --no-commit-id --name-only -r"
 
 command -qv nvim && alias vim nvim
+
+function batdiff
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+end
 
 set -gx EDITOR nvim
 

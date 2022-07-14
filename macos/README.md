@@ -20,7 +20,7 @@ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 ```
 brew tap homebrew/cask-fonts
 brew install --cask iterm2 karabiner-elements font-hack-nerd-font docker
-brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspell mongodb/brew/libmongocrypt pkg-config numpy tmux jq mongocli mongodb-community
+brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspell mongodb/brew/libmongocrypt pkg-config numpy tmux jq mongocli mongodb-community bat
 ```
 
 ### NPM
