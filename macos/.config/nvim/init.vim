@@ -47,7 +47,7 @@ set autowrite        "
 set mouse=a          " Enable mouse support
 set ai               " auto ident
 set si               " smart ident
-set scl          " gutter bar
+set scl=yes          " gutter bar
 set inccommand=split
 set clipboard=unnamedplus "macos copy
 set shiftround
@@ -104,6 +104,9 @@ Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'alan-w-255/telescope-mru.nvim'
 Plug 'yegappan/mru'
 
+Plug 'jiangmiao/auto-pairs'
+Plug 'andymass/vim-matchup'
+
 call plug#end()
 
 lua << EOF
@@ -130,6 +133,7 @@ set termguicolors
 "colorscheme gruvbox
 "let g:airline_theme = 'gruvbox'
 
+set background=dark
 colorscheme tokyonight
 let g:tokyonight_enable_italic = 1
 let g:airline_theme = "tokyonight"
@@ -328,7 +332,7 @@ let g:coc_explorer_global_presets = {
 
 " COC """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:coc_global_extensions = ['coc-go', 'coc-json', 'coc-explorer']
+let g:coc_global_extensions = ['coc-json', 'coc-explorer']
 
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some

@@ -1,5 +1,22 @@
 {
-    "languageserver": {},
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": [
+                "go.work",
+                "go.mod",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "filetypes": [
+                "go"
+            ],
+            "initializationOptions": {
+                "usePlaceholders": true
+            }
+        }
+    },
     "explorer.file.showHiddenFiles": true,
     "explorer.width": 50,
     "explorer.icon.enableNerdfont": true,
@@ -32,11 +49,5 @@
         "markdown",
         "go",
         "json"
-    ],
-    "go.goplsArgs": [
-        "-remote=auto",
-        "-logfile",
-        "/tmp/gopls.log"
-    ],
-    "go.goplsPath": "/Users/mvondentz/go/bin/gopls"
+    ]
 }
