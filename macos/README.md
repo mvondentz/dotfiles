@@ -5,6 +5,7 @@
 - Bravo
 - Homebrew
 - HackerFonts (https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
+- Incosolata (https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Inconsolata/complete/Inconsolata%20Regular%20Nerd%20Font%20Complete.ttf)
 - pip (curl https://bootstrap.pypa.io/get-pip.py | python3)
 - vim-plug (sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
@@ -66,7 +67,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Themes
 git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 ```
-
 
 ### Karabiner Keymaps
 ~/.config/karabiner/assets/complex_modifications/
