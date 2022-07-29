@@ -165,12 +165,8 @@ au FileType go nnoremap <Leader>hr :DlvTest <CR>
 au FileType go nnoremap <Leader>hc :DlvClearAll <CR>
 
 " Integration tests
-au FileType go nnoremap <leader>ht :terminal t %:p
-function! IntegrationTest(path,params)
-    new
-    silent! exec "r!t '" . a:path . "' " . a:params
-endfunction
-
+au FileType go nnoremap <leader>ht :vs<bar>terminal t %:p
+"
 " Remaps """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader = ";"
