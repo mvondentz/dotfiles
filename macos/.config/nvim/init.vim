@@ -47,7 +47,6 @@ set autowrite        "
 set mouse=a          " Enable mouse support
 set ai               " auto ident
 set si               " smart ident
-set scl=yes          " gutter bar
 set inccommand=split
 set clipboard=unnamedplus "macos copy
 set shiftround
@@ -62,8 +61,6 @@ call plug#begin()
 
 "Plug 'morhetz/gruvbox'
 Plug 'ghifarit53/tokyonight-vim'
-
-Plug 'ryanoasis/vim-devicons'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -94,12 +91,13 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'ThePrimeagen/git-worktree.nvim'
 
-Plug 'tpope/vim-dadbod'
-Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'kristijanhusak/vim-dadbod-completion'
+"Plug 'tpope/vim-dadbod'
+"Plug 'kristijanhusak/vim-dadbod-ui'
+"Plug 'kristijanhusak/vim-dadbod-completion'
 
 Plug 'alan-w-255/telescope-mru.nvim'
 Plug 'yegappan/mru'
@@ -355,15 +353,6 @@ set cmdheight=2
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-    " Recently vim can merge signcolumn and number column into one
-    set signcolumn=number
-else
-    set signcolumn=yes
-endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

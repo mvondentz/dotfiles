@@ -13,7 +13,8 @@
                 "go"
             ],
             "initializationOptions": {
-                "usePlaceholders": true
+                "usePlaceholders": false,
+                "memoryMode": "DegradeClosed"
             }
         }
     },
