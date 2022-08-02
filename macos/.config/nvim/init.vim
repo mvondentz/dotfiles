@@ -235,17 +235,12 @@ inoremap <c-k> <up>
 inoremap <c-l> <right>
 
 "Delve Remaps
-"q = quit
-"n = next
-"b <line> = add brk to line
-"c = continue (next line)
-"r = restart
-"s = step
-"so = step out
 au FileType go nnoremap <Leader>ha :DapToggleBreakpoint <CR>
 au FileType go nnoremap <Leader>hc :DapContinue <CR>
 au FileType go nnoremap <Leader>ho :DapStepOut <CR>
+au FileType go nnoremap <Leader>hn :DapStepOver <CR>
 au FileType go nnoremap <Leader>hi :DapStepIn <CR>
+au FileType go nnoremap <Leader>hq :DapTerminate <CR>
 
 " Integration tests
 au FileType go nnoremap <leader>ht :vs<bar>terminal t %:p
@@ -293,17 +288,17 @@ dap.adapters.delve = {
 dap.configurations.go = {
   {
     type = "delve",
-    name = "Debug test",
-    request = "launch",
-    mode = "test",
-    program = "${file}"
-  },
-  {
-    type = "delve",
     name = "Test .mod",
     request = "launch",
     mode = "test",
     program = "./${relativeFileDirname}"
+  },
+  {
+    type = "delve",
+    name = "Debug test",
+    request = "launch",
+    mode = "test",
+    program = "${file}"
   }
 }
 
