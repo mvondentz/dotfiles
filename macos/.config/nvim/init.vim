@@ -64,6 +64,10 @@ Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kkharji/lspsaga.nvim'
 Plug 'nvim-lua/lsp-status.nvim'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
 
 Plug 'folke/tokyonight.nvim'
 
@@ -88,11 +92,11 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'zivyangll/git-blame.vim'
 
-Plug 'sebdah/vim-delve'
-"Plug 'mfussenegger/nvim-dap'
+"Plug 'sebdah/vim-delve'
+Plug 'mfussenegger/nvim-dap'
 "Plug 'leoluz/nvim-dap-go'
-"Plug 'rcarriga/nvim-dap-ui'
-"Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'nvim-telescope/telescope-dap.nvim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -133,13 +137,12 @@ defaults = {
 
 require("telescope").load_extension('mru')
 require("telescope").load_extension("git_worktree")
---require("telescope").load_extension("dap")
+require("telescope").load_extension("dap")
 
 require("nvim-autopairs").setup({
   disable_filetype = { "TelescopePrompt" , "vim" },
 })
 
---require('dap-go').setup()
 
 EOF
 
@@ -164,14 +167,6 @@ let g:airline_theme = "tokyonight"
 
 set cursorline
 
-" go highlights
-"let g:go_highlight_types = 1
-"let g:go_highlight_fields = 0
-"let g:go_highlight_functions = 1
-"let g:go_highlight_function_calls = 1
-"let g:go_highlight_operators = 0
-"let g:go_highlight_build_constraints = 0
-
 " Autocmd """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Remaps """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -191,7 +186,7 @@ vmap y ygv<Esc>
 nmap <leader>a o<Esc>
 nmap <leader>A O<Esc>
 
-" Telescope 
+" Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -207,9 +202,9 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-let g:NERDTreeGitStatusUseNerdFonts = 1 
+let g:NERDTreeGitStatusUseNerdFonts = 1
 let g:NERDTreeHijackNetrw=0
-let g:NERDTreeShowHidden=1 
+let g:NERDTreeShowHidden=1
 "----
 
 " Buffers navigation
@@ -247,9 +242,10 @@ inoremap <c-l> <right>
 "r = restart
 "s = step
 "so = step out
-au FileType go nnoremap <Leader>ha :DlvToggleBreakpoint <CR>
-au FileType go nnoremap <Leader>hr :DlvTest <CR>
-au FileType go nnoremap <Leader>hc :DlvClearAll <CR>
+au FileType go nnoremap <Leader>ha :DapToggleBreakpoint <CR>
+au FileType go nnoremap <Leader>hc :DapContinue <CR>
+au FileType go nnoremap <Leader>ho :DapStepOut <CR>
+au FileType go nnoremap <Leader>hi :DapStepIn <CR>
 
 " Integration tests
 au FileType go nnoremap <leader>ht :vs<bar>terminal t %:p
@@ -267,20 +263,126 @@ let g:dbs = {
             \ 'prod_events': 'mongodb://localhost:27023/events?readPreference=secondaryPreferred&serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1',
             \ }
 
+
+" Worktree  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+lua << EOF
+local worktree = require("git-worktree")
+
+worktree.on_tree_change(function(op, metadata)
+  if op == worktree.Operations.Switch then
+      -- Navigate to src/el to enable go test
+      local cmd = string.format("%s %s/src/el", "cd", metadata.path)
+      vim.cmd(cmd)
+      end
+end)
+EOF
+
 " DAP config """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"TBD
+lua << EOF
+
+local dap = require('dap')
+dap.adapters.delve = {
+  type = 'server',
+  port = '${port}',
+  executable = {
+    command = 'dlv',
+    args = {'dap', '-l', '127.0.0.1:${port}'},
+  }
+}
+
+dap.configurations.go = {
+  {
+    type = "delve",
+    name = "Debug test",
+    request = "launch",
+    mode = "test",
+    program = "${file}"
+  },
+  {
+    type = "delve",
+    name = "Test .mod",
+    request = "launch",
+    mode = "test",
+    program = "./${relativeFileDirname}"
+  }
+}
+
+
+local dapui = require("dapui")
+dapui.setup()
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
+
+EOF
+
 
 " LSP Config  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua << EOF
+
 local opts = { noremap=true, silent=true }
 
 local lsp_config = require'lspconfig'
 local lsp_status = require'lsp-status'
 local lsp_saga = require'lspsaga'
+--local lsp_completion = require'completion'
 --local lsp_format = require'formatter'
+
+-- luasnip setup
+local luasnip = require 'luasnip'
+
+-- nvim-cmp setup
+local cmp = require 'cmp'
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  }),
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },
+}
+
 
 local on_attach = function(client, bufnr)
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
+
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     --vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
@@ -289,18 +391,16 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
-    local map = vim.api.nvim_buf_set_keymap
-    map(0, "n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
-    map(0, "n", "K","<cmd>Lspsaga hover_doc<cr>", opts)
-    map(0, "n", "<leader>dj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-    map(0, "n", "<leader>dk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-    map(0, "n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", opts)
-    map(0, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
-    map(0, "n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>", {})
-    map(0, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>", {})
-    --map(0, "x", "gx", ":<c-u>Lspsaga range_code_action<cr>", opts)
-    --map(0, "n", "go", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+    vim.api.nvim_buf_set_keymap(0, "n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
+    vim.api.nvim_buf_set_keymap(0, "n", "K","<cmd>Lspsaga hover_doc<cr>", opts)
+    vim.api.nvim_buf_set_keymap(0, "n", "<leader>dj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+    vim.api.nvim_buf_set_keymap(0, "n", "<leader>dk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+    vim.api.nvim_buf_set_keymap(0, "n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", opts)
+    vim.api.nvim_buf_set_keymap(0, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
+    vim.api.nvim_buf_set_keymap(0, "n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>", {})
+    vim.api.nvim_buf_set_keymap(0, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>", {})
 
     --lsp_completion.on_attach(client)
     lsp_status.on_attach(client)
@@ -309,14 +409,7 @@ local on_attach = function(client, bufnr)
         --end
 end
 
-local lsp_flags = {
-    debounce_text_changes = 150,
-    }
-
---require('lspconfig')['gopls'].setup{
---on_attach = on_attach,
---flags = lsp_flags,
---}
+local lsp_flags = { debounce_text_changes = 500 }
 
 vim.g['completion_auto_change_source'] = 1
 
@@ -325,13 +418,14 @@ lsp_saga.init_lsp_saga{
     use_saga_diagnostic_sign = false
 }
 
-local lsp_default_config = {on_attach = on_attach, capabilites = lsp_status.capabilities}
+lsp_capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+
+local lsp_default_config = {on_attach = on_attach, capabilites = lsp_capabilities, flags = lsp_flags}
 local servers = {
     gopls = {
-        gofumpt = true,
         cmd = {'gopls'},
         capabilties = {
-            textDocuemnt = {
+            textDocument = {
                 completion = {
                     completionItem = {
                         snippetSupport = true
@@ -350,9 +444,11 @@ for server, config in pairs(servers) do
     lsp_config[server].setup(vim.tbl_deep_extend('force', lsp_default_config, config))
 end
 
-require 'nvim-treesitter.configs'.setup{
+require 'nvim-treesitter.configs'.setup({
 highlight = {
     enable = true
     }
-}
+})
+
+
 EOF
