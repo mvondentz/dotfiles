@@ -212,6 +212,7 @@ map <leader>n :bn<cr>
 map <leader>b :bp<cr>
 
 map <leader>dd :bd<cr>
+map <leader>df :bd!<cr>
 command BufOnly silent! execute "%bd|e#|bd#"
 map <leader>da :BufOnly<cr>
 
