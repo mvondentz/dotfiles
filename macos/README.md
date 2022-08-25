@@ -65,7 +65,9 @@ defaults write -g KeyRepeat -int 1
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Themes
-git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
+git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack (OLD)
+
+ln -s ~/code/github.com/MauricioDentz/dotfiles/macos/.config/colors/falcon.tmux.conf ~/.tmux/falcon.tmux.conf
 ```
 
 ### Karabiner Keymaps

@@ -69,7 +69,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 
-Plug 'folke/tokyonight.nvim'
+Plug 'fenetikm/falcon'
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -92,9 +92,7 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'zivyangll/git-blame.vim'
 
-"Plug 'sebdah/vim-delve'
 Plug 'mfussenegger/nvim-dap'
-"Plug 'leoluz/nvim-dap-go'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'nvim-telescope/telescope-dap.nvim'
 
@@ -149,32 +147,16 @@ EOF
 
 " Themes """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set termguicolors
-
-"colorscheme gruvbox
-"let g:airline_theme = 'gruvbox'
-
+set cursorline
 set background=dark
 
-let g:tokyonight_style = "night"
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-let g:tokyonight_colors = {
-  \ 'hint': 'orange',
-  \ 'error': '#ff0000'
-\ }
-colorscheme tokyonight
-let g:airline_theme = "tokyonight"
-
-set cursorline
-
-" Autocmd """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme falcon
+let g:falcon_airline = 1
+let g:airline_theme = "falcon"
 
 " Remaps """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader = ";"
-
-" Vista
-nnoremap <leader>s :Vista!!<CR>
 
 " esc to exit terminal
 tnoremap <Esc> <C-\><C-n>
@@ -245,6 +227,19 @@ au FileType go nnoremap <Leader>hq :DapTerminate <CR>
 
 " Integration tests
 au FileType go nnoremap <leader>ht :vs<bar>terminal t %:p
+
+lua << EOF
+-- Highlight yanked text for a brief amount of time.
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("yank-highlight", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = (vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'),
+      timeout = 300
+    })
+  end
+})
+EOF
 
 
 " Airline """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -420,6 +415,8 @@ local lsp_default_config = {on_attach = on_attach, capabilites = lsp_capabilitie
 local servers = {
     gopls = {
         cmd = {'gopls'},
+        -- add integration,cse build flags here
+        --cmd = {'gopls',"-remote=192.168.0.151:7050", "-v"},
         capabilties = {
             textDocument = {
                 completion = {
