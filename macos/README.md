@@ -16,6 +16,9 @@ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 - steelseries gg
 - Memory
 - Google drive
+- Fantastical
+- Notion
+- Todoist
 
 
 ### Brew
