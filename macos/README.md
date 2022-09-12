@@ -15,6 +15,7 @@ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 - logitech g hub
 - steelseries gg
 - Memory
+- Google drive
 
 
 ### Brew
