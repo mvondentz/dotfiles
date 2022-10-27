@@ -193,11 +193,14 @@ let g:NERDTreeShowHidden=1
 map <leader>n :bn<cr>
 map <leader>b :bp<cr>
 
+map <leader>ds :bp\|bd #<cr>
 map <leader>dd :bd<cr>
 map <leader>df :bd!<cr>
 command BufOnly silent! execute "%bd|e#|bd#"
 map <leader>da :BufOnly<cr>
 
+" Format json
+command JsonFormat execute "%!jq"
 
 " Git remaps
 nnoremap <leader>ij :<C-u>call gitblame#echo()<CR>
@@ -226,7 +229,7 @@ au FileType go nnoremap <Leader>hi :DapStepIn <CR>
 au FileType go nnoremap <Leader>hq :DapTerminate <CR>
 
 " Integration tests
-au FileType go nnoremap <leader>ht :vs<bar>terminal t %:p
+au FileType go nnoremap <leader>ht :sp<bar>terminal t %:p
 
 lua << EOF
 -- Highlight yanked text for a brief amount of time.
@@ -261,6 +264,7 @@ local worktree = require("git-worktree")
 
 worktree.on_tree_change(function(op, metadata)
   if op == worktree.Operations.Switch then
+      -- TODO: Check if we are in the services repo, otherwise don't do this
       -- Navigate to src/el to enable go test
       local cmd = string.format("%s %s/src/el", "cd", metadata.path)
       vim.cmd(cmd)
@@ -287,14 +291,15 @@ dap.configurations.go = {
     name = "Test .mod",
     request = "launch",
     mode = "test",
-    program = "./${relativeFileDirname}"
+    program = "./${relativeFileDirname}",
+    --args = {"-tags","integration,cse"}
   },
   {
     type = "delve",
     name = "Debug test",
     request = "launch",
     mode = "test",
-    program = "${file}"
+    program = "${file}",
   }
 }
 
@@ -322,6 +327,8 @@ local opts = { noremap=true, silent=true }
 local lsp_config = require'lspconfig'
 local lsp_status = require'lsp-status'
 local lsp_saga = require'lspsaga'
+local cmp_nvim_lsp = require'cmp_nvim_lsp'
+
 --local lsp_completion = require'completion'
 --local lsp_format = require'formatter'
 
@@ -330,45 +337,115 @@ local luasnip = require 'luasnip'
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
+--cmp.setup {
+  --snippet = {
+    --expand = function(args)
+      --luasnip.lsp_expand(args.body)
+    --end,
+  --},
+  --mapping = cmp.mapping.preset.insert({
+    --['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    --['<C-f>'] = cmp.mapping.scroll_docs(4),
+    --['<C-Space>'] = cmp.mapping.complete(),
+    --['<CR>'] = cmp.mapping.confirm {
+      --behavior = cmp.ConfirmBehavior.Replace,
+      --select = true,
+    --},
+    --['<Tab>'] = cmp.mapping(function(fallback)
+      --if cmp.visible() then
+        --cmp.select_next_item()
+      --elseif luasnip.expand_or_jumpable() then
+        --luasnip.expand_or_jump()
+      --else
+        --fallback()
+      --end
+    --end, { 'i', 's' }),
+    --['<S-Tab>'] = cmp.mapping(function(fallback)
+      --if cmp.visible() then
+        --cmp.select_prev_item()
+      --elseif luasnip.jumpable(-1) then
+        --luasnip.jump(-1)
+      --else
+        --fallback()
+      --end
+    --end, { 'i', 's' }),
+  --}),
+  --sources = {
+    --{ name = 'nvim_lsp' },
+    --{ name = 'luasnip' },
+  --},
+--}
+
 cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
+    snippet = {
+        expand = function(args)
+        luasnip.lsp_expand(args.body)
+        end,
+        },
+    mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+        },
     ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
+    if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
+    elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      else
+    else
         fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  }),
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
-}
+        end
+        end, { 'i', 's' }),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            cmp.select_prev_item()
+        elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+        else
+            fallback()
+            end
+            end, { 'i', 's' }),
+            }),
+        sources = {
+            {name = 'path'},
+            {name = 'nvim_lsp', keyword_length = 3},
+            {name = 'buffer', keyword_length = 3},
+            {name = 'luasnip', keyword_length = 2},
+            },
+        window = {
+            documentation = cmp.config.window.bordered()
+            },
+        formatting = {
+            fields = {'menu', 'abbr', 'kind'},
+            format = function(entry, item)
+            local menu_icon = {
+                nvim_lsp = 'λ',
+                luasnip = '⋗',
+                buffer = 'Ω',
+                path = '🖫',
+                }
 
+            item.menu = menu_icon[entry.source.name]
+            return item
+            end,
+            },
+        }
+
+local sign = function(opts)
+  vim.fn.sign_define(opts.name, {
+    texthl = opts.name,
+    text = opts.text,
+    numhl = ''
+  })
+end
+
+sign({name = 'DiagnosticSignError', text = '✘'})
+sign({name = 'DiagnosticSignWarn', text = '▲'})
+sign({name = 'DiagnosticSignHint', text = '⚑'})
+sign({name = 'DiagnosticSignInfo', text = ''})
 
 local on_attach = function(client, bufnr)
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -409,7 +486,9 @@ lsp_saga.init_lsp_saga{
     use_saga_diagnostic_sign = false
 }
 
-lsp_capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
+--lsp_capabilities = cmp_nvim_lsp.update_capabilities(lsp_status.capabilities)
+-- lsp_capabilities = cmp_nvim_lsp.default_capabilities()
+lsp_capabilities = lsp_config.util.default_config
 
 local lsp_default_config = {on_attach = on_attach, capabilites = lsp_capabilities, flags = lsp_flags}
 local servers = {
