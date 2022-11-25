@@ -230,6 +230,8 @@ au FileType go nnoremap <Leader>hq :DapTerminate <CR>
 
 " Integration tests
 au FileType go nnoremap <leader>ht :sp<bar>terminal t %:p
+" Local tests with cse,integration build tags
+au FileType go nnoremap <leader>hr :sp<bar>terminal r %:p:h
 
 lua << EOF
 -- Highlight yanked text for a brief amount of time.
@@ -291,7 +293,7 @@ dap.configurations.go = {
     request = "launch",
     mode = "test",
     program = "./${relativeFileDirname}",
-    --args = {"-tags","integration,cse"}
+   -- args = {"-tags","integration,cse"}
   },
   {
     type = "delve",
@@ -492,9 +494,14 @@ lsp_capabilities = lsp_config.util.default_config
 local lsp_default_config = {on_attach = on_attach, capabilites = lsp_capabilities, flags = lsp_flags}
 local servers = {
     gopls = {
-        cmd = {'gopls'},
-        -- add integration,cse build flags here
-        --cmd = {'gopls',"-remote=192.168.0.151:7050", "-v"},
+        cmd = {'gopls', '--remote=auto'},
+        settings = {
+            gopls = {
+                usePlaceholders = true,
+                buildFlags =  {"-tags=integration,cse"},
+                gofumpt = true,
+            }
+            },
         capabilties = {
             textDocument = {
                 completion = {
