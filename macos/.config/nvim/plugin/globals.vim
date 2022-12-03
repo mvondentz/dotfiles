@@ -1,4 +1,4 @@
-" Global Sets """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Global Sets 
 
 set ttyfast          " Fast rendering
 set lazyredraw

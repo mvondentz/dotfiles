@@ -13,6 +13,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 EOF
 
 lua << EOF
+
 local worktree = require("git-worktree")
 
 worktree.on_tree_change(function(op, metadata)

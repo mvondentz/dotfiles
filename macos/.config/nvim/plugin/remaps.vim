@@ -21,7 +21,6 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 let g:NERDTreeGitStatusUseNerdFonts = 1
 let g:NERDTreeHijackNetrw=0
 let g:NERDTreeShowHidden=1
-"----
 
 " Buffers navigation
 map <leader>n :bn<cr>
@@ -45,8 +44,8 @@ nnoremap <leader>ip <Plug>(GitGutterPreviewHunk)
 " Rezise maps
 nnoremap + :res +5<CR>
 nnoremap _ :res -5<CR>
-nnoremap < :vertical resize +5<CR>
-nnoremap > :vertical resize -5<CR>
+nnoremap > :vertical resize +5<CR>
+nnoremap < :vertical resize -5<CR>
 
 " vim navigation while in insert mode
 inoremap <c-j> <down>
@@ -58,3 +57,26 @@ inoremap <c-l> <right>
 au FileType go nnoremap <leader>ht :sp<bar>terminal t %:p
 " Local tests with cse,integration build tags
 au FileType go nnoremap <leader>hr :sp<bar>terminal r %:p:h
+
+" Centralize while navigating
+nnoremap <c-d> <c-d>zz
+nnoremap <c-u> <c-u>zz
+nnoremap n nzzzv
+
+" DAP
+au FileType go nnoremap <Leader>ha :DapToggleBreakpoint <CR>
+au FileType go nnoremap <Leader>hc :DapContinue <CR>
+au FileType go nnoremap <Leader>ho :DapStepOut <CR>
+au FileType go nnoremap <Leader>hn :DapStepOver <CR>
+au FileType go nnoremap <Leader>hi :DapStepIn <CR>
+au FileType go nnoremap <Leader>hq :DapTerminate <CR>
+
+" Telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fs <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+nnoremap <leader>fr <cmd>Telescope mru<cr>
+nnoremap <leader>ft <cmd>Telescope dap configurations<cr>
+
