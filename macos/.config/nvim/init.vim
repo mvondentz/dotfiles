@@ -53,15 +53,7 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 'ThePrimeagen/git-worktree.nvim'
 
-Plug 'alan-w-255/telescope-mru.nvim'
-Plug 'yegappan/mru'
-
 Plug 'windwp/nvim-autopairs'
 Plug 'andymass/vim-matchup'
 
 call plug#end()
-
-lua << EOF
-require("mason").setup()
-require("mason-lspconfig").setup()
-EOF

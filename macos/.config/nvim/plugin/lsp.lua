@@ -109,7 +109,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+    --vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
     vim.api.nvim_buf_set_keymap(0, "n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
@@ -119,10 +119,10 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(0, "n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", opts)
     vim.api.nvim_buf_set_keymap(0, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
 
-    --lsp_completion.on_attach(client)
     lsp_status.on_attach(client)
+
     --if client.resolved_capabilities.document_formatting then
-    --lsp_format.buf_pre_save()
+        --lsp_format.buf_pre_save()
     --end
 end
 

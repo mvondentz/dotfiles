@@ -26,6 +26,7 @@ let g:NERDTreeShowHidden=1
 map <leader>n :bn<cr>
 map <leader>b :bp<cr>
 
+" Closing buffers
 map <leader>ds :bp\|bd #<cr>
 map <leader>dd :bd<cr>
 map <leader>df :bd!<cr>
@@ -77,6 +78,6 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fs <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
-nnoremap <leader>fr <cmd>Telescope mru<cr>
+nnoremap <leader>fr <cmd>Telescope oldfiles<cr>
 nnoremap <leader>ft <cmd>Telescope dap configurations<cr>
 
