@@ -92,7 +92,7 @@ sign({name = 'DiagnosticSignInfo', text = ''})
 ---------------------
 
 
--- LSP Client configs 
+-- LSP Client configs
 local present, lsp_status = pcall(require, "lsp-status")
 if not present then
     return
@@ -120,10 +120,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(0, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
 
     lsp_status.on_attach(client)
-
-    --if client.resolved_capabilities.document_formatting then
-        --lsp_format.buf_pre_save()
-    --end
 end
 
 lsp_status.register_progress()

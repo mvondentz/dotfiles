@@ -1,4 +1,4 @@
-" Global Sets 
+" Global Sets
 
 set ttyfast          " Fast rendering
 set lazyredraw
@@ -26,7 +26,7 @@ set signcolumn=yes   " Add a column on the left. Useful for linting
 set showcmd
 set shell=fish
 set cmdheight=3      " Give more space for displaying messages
-set updatetime=50   " Time in miliseconds to consider the changes
+set updatetime=50    " Time in miliseconds to consider the changes
 set encoding=utf-8   " The encoding should be utf-8 to activate the font icons
 set nobackup         " No backup files
 set nowritebackup    " No backup files
@@ -47,4 +47,3 @@ set shiftround
 filetype on          " Detect and set the filetype option and trigger the FileType Event
 filetype plugin on   " Load the plugin file for the file type, if any
 filetype indent on   " Load the indent file for the file type, if any
-
