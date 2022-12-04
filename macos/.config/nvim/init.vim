@@ -16,7 +16,6 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 
-Plug 'fenetikm/falcon'
 
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -51,5 +50,7 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 
 Plug 'andymass/vim-matchup'
 Plug 'numToStr/Comment.nvim'
+
+Plug 'fenetikm/falcon'
 
 call plug#end()
