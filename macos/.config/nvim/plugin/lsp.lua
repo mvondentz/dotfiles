@@ -165,12 +165,3 @@ local servers = {
 for server, config in pairs(servers) do
     lsp_config[server].setup(vim.tbl_deep_extend('force', lsp_default_config, config))
 end
-
-local present, treesiter = pcall(require, "nvim-treesitter.configs")
-if present then
-    treesiter.setup({
-        highlight = {
-            enable = true
-        }
-    })
-end

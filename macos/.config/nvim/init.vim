@@ -8,8 +8,6 @@ if !1 | finish | endif
 " Plugins 
 call plug#begin()
 
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kkharji/lspsaga.nvim'
 Plug 'nvim-lua/lsp-status.nvim'
@@ -25,8 +23,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-Plug 'honza/vim-snippets'
 
 Plug 'mbbill/undotree'
 
@@ -53,7 +49,7 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 'ThePrimeagen/git-worktree.nvim'
 
-Plug 'windwp/nvim-autopairs'
 Plug 'andymass/vim-matchup'
+Plug 'numToStr/Comment.nvim'
 
 call plug#end()
