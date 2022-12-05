@@ -16,10 +16,6 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 
-
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -43,7 +39,6 @@ Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'ThePrimeagen/git-worktree.nvim'
@@ -52,5 +47,8 @@ Plug 'andymass/vim-matchup'
 Plug 'numToStr/Comment.nvim'
 
 Plug 'fenetikm/falcon'
+
+Plug 'nvim-tree/nvim-web-devicons' 
+Plug 'nvim-tree/nvim-tree.lua'
 
 call plug#end()

@@ -15,14 +15,14 @@ dap.adapters.delve = {
 dap.configurations.go = {
     {
         type = "delve",
-        name = "Dir",
+        name = "dir",
         request = "launch",
         mode = "test",
         program = "./${relativeFileDirname}",
     },
     {
         type = "delve",
-        name = "File",
+        name = "file",
         request = "launch",
         mode = "test",
         program = "${file}",

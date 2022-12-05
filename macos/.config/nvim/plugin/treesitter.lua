@@ -4,7 +4,7 @@ if not present then
 end
 
 treesiter.setup({
-    ensure_installed = { "go", "lua", "javascript", "json" },
+    ensure_installed = { "go", "lua", "javascript", "json", "toml" },
     sync_install = true,
     auto_install = true,
     ignore_install = {},
