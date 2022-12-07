@@ -31,6 +31,7 @@ alias gp "g push"
 alias gl "g log --oneline"
 alias gc "g checkout"
 alias gp "g push"
+alias ga "g commit --amend --no-edit"
 alias gtree "g diff-tree --no-commit-id --name-only -r"
 
 command -qv nvim && alias vim nvim
