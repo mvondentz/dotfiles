@@ -12,7 +12,7 @@ nmap <leader>a o<Esc>
 nmap <leader>A O<Esc>
 
 " NerdTree
-nmap <leader>fe :NvimTreeToggle <CR>
+nmap <leader>fe :NvimTreeFindFileToggle <CR>
 
 " Buffers navigation
 map <leader>n :bn<cr>
