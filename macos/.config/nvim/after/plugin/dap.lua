@@ -5,10 +5,10 @@ end
 
 dap.adapters.delve = {
     type = 'server',
-    port = '${port}',
+    kort = '${port}',
     executable = {
         command = 'dlv',
-        args = {'dap', '-l', '127.0.0.1:${port}'},
+        args = { 'dap', '-l', '127.0.0.1:${port}' },
     }
 }
 
@@ -45,4 +45,3 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
 end
-

@@ -44,7 +44,9 @@ set -gx EDITOR nvim
 
 set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
+set -gx PATH /usr/local/bin $PATH
 set -gx PATH ~/.local/bin $PATH
+set -gx PATH /opt/homebrew/bin $PATH
 
 # NodeJS
 set -gx PATH node_modules/.bin $PATH
