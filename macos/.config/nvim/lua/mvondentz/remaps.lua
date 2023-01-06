@@ -39,6 +39,8 @@ map("i", "<c-l>", "<right>")
 map("n", "<leader>ti", ":sp<bar>terminal t %:p")
 --Local tests with cse,integration build tags
 map("n", "<leader>tu", ":sp<bar>terminal r %:p:h")
+-- Run currently main file
+map("n", "<leader>rf", ":sp<bar>terminal m %:p")
 
 --Centralize while navigating
 map("n", "<C-d>", "<C-d>zz")

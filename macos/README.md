@@ -21,7 +21,7 @@
 ```
 brew tap homebrew/cask-fonts
 brew install --cask iterm2 karabiner-elements font-hack-nerd-font docker amethyst 
-brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspell mongodb/brew/libmongocrypt pkg-config numpy tmux jq mongocli mongodb-community bat pinentry-mac
+brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspell mongodb/brew/libmongocrypt pkg-config numpy tmux jq mongocli mongodb-community bat pinentry-mac docker
 ```
 
 ### NPM

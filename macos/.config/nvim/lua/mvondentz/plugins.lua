@@ -23,6 +23,7 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/playground')
 
     use('tpope/vim-fugitive')
+    use('tpope/vim-rhubarb')
 
     -- use('mbbill/undotree')
 
