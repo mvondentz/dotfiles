@@ -35,12 +35,15 @@ map("i", "<c-h>", "<left>")
 map("i", "<c-k>", "<up>")
 map("i", "<c-l>", "<right>")
 
+-- Terminal
+map("n", "<leader>tt", ":sp<bar>terminal <CR>")
+
 --Integration tests
-map("n", "<leader>ti", ":sp<bar>terminal t %:p")
+map("n", "<leader>ti", ":sp<bar>terminal t %:p ")
 --Local tests with cse,integration build tags
-map("n", "<leader>tu", ":sp<bar>terminal r %:p:h")
+map("n", "<leader>tu", ":sp<bar>terminal r %:p:h ")
 -- Run currently main file
-map("n", "<leader>rf", ":sp<bar>terminal m %:p")
+map("n", "<leader>rf", ":sp<bar>terminal m %:p ")
 
 --Centralize while navigating
 map("n", "<C-d>", "<C-d>zz")
@@ -89,7 +92,7 @@ map("n", "<leader>z", "<cmd> ZenMode <CR>")
 vim.keymap.set("n", "<leader>git", vim.cmd.Git);
 
 -- undortree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+-- vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 
 -- Leap

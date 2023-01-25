@@ -47,6 +47,10 @@ return require('packer').startup(function(use)
     use('jiangmiao/auto-pairs')
 
     use {
+        'lewis6991/gitsigns.nvim',
+    }
+
+    use {
         'rcarriga/nvim-dap-ui',
         requires = {
             { 'mfussenegger/nvim-dap' },
