@@ -44,6 +44,8 @@ return require('packer').startup(function(use)
 
     use('ggandor/leap.nvim')
 
+    use('jiangmiao/auto-pairs')
+
     use {
         'rcarriga/nvim-dap-ui',
         requires = {

@@ -1,5 +1,4 @@
 [alias]
-    #up = !git fetch --all && git rebase origin/main
     up = !git pull origin main
 [user]
 	name = Mauricio Von Dentz
@@ -18,3 +17,22 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[pull]
+	rebase = true
+
+# Delta config (diff)
+[core]
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true    
+    light = false      
+    side-by-side = true
+    line-numbers = true
+    show-syntax-themes = true
+    dark = true
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default

@@ -21,13 +21,12 @@ alias v nvim
 alias c clear
 alias clera clear
 
-#alias fd "fd … -X bat"
-
 # Git Alias
 alias g git
 alias gs "g status"
 alias gd "g diff"
 alias gp "g push"
+alias gpf "g push"
 alias gl "g log --oneline"
 alias gc "g checkout"
 alias gp "g push"
@@ -35,10 +34,6 @@ alias ga "g commit --amend --no-edit"
 alias gtree "g diff-tree --no-commit-id --name-only -r"
 
 command -qv nvim && alias vim nvim
-
-function batdiff
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
-end
 
 set -gx EDITOR nvim
 
@@ -74,4 +69,4 @@ end
 #pyenv init - | source
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/mvondentz/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/mvondentz/Downloads/google-cloud-sdk/path.fish.inc'; end
+if [ -f '/Users/mvondentz/google-cloud-sdk/path.fish.inc' ]; . '/Users/mvondentz/google-cloud-sdk/path.fish.inc'; end
