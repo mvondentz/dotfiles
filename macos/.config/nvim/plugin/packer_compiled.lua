@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  falcon = {
-    loaded = true,
-    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/falcon",
-    url = "https://github.com/fenetikm/falcon"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -208,6 +203,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["rose-pine"] = {
+    loaded = true,
+    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/rose-pine",
+    url = "https://github.com/rose-pine/neovim"
   },
   ["telescope-dap.nvim"] = {
     loaded = true,

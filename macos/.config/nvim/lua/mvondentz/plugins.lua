@@ -36,7 +36,11 @@ return require('packer').startup(function(use)
 
     use('numToStr/Comment.nvim')
 
-    use('fenetikm/falcon')
+    -- use('fenetikm/falcon')
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine',
+    })
 
     use('ThePrimeagen/git-worktree.nvim')
 
@@ -46,9 +50,7 @@ return require('packer').startup(function(use)
 
     use('jiangmiao/auto-pairs')
 
-    use {
-        'lewis6991/gitsigns.nvim',
-    }
+    use('lewis6991/gitsigns.nvim')
 
     use {
         'rcarriga/nvim-dap-ui',
