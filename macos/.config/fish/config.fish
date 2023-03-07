@@ -47,7 +47,8 @@ set -gx PATH /opt/homebrew/bin $PATH
 set -gx PATH node_modules/.bin $PATH
 
 # Go
-set -g GOPATH $HOME/go
+# set -g GOPATH $HOME/go
+set -g GOPATH /usr/local/go/
 set -gx PATH $GOPATH/bin $PATH
 
 # NVM

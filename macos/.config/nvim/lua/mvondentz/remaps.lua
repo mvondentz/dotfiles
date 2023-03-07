@@ -78,8 +78,8 @@ map("n", "<leader>fd", "<cmd>Telescope dap configurations<CR>")
 map("n", "<leader>rr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- navigate the quickfix list
-map("n", "<C-k>", "<cmd>cnext<CR>zz")
-map("n", "<C-j>", "<cmd>cprev<CR>zz")
+map("n", "<C-j>", "<cmd>cnext<CR>zz")
+map("n", "<C-k>", "<cmd>cprev<CR>zz")
 
 -- window navigation
 map("n", "<leader>h", "<C-w>h")
