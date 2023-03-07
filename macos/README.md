@@ -1,21 +1,8 @@
-### Apps to Install
-- Alfred
-- 1password
-- Hidden Bar
-- Homebrew
+```
 - HackerFonts (https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
 - Incosolata (https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Inconsolata/complete/Inconsolata%20Regular%20Nerd%20Font%20Complete.ttf)
 - pip (curl https://bootstrap.pypa.io/get-pip.py | python3)
-- gcloud
-- zoom
-- spotify
-- logitech g hub
-- steelseries gg
-- Google drive
-- Fantastical
-- Notion
-- Todoist
-
+```
 
 ### Brew
 ```
@@ -55,8 +42,11 @@ pip3 install pynvim
 
 ###  Keyrepeat
 ```
-defaults write -g InitialKeyRepeat -int 10
+defaults write -g InitialKeyRepeat -int 13
+defaults write NSGlobalDomain InitialKeyRepeat -int 13
 defaults write -g KeyRepeat -int 1
+defaults write -g NSGlobalDomain -int 1
+defaults delete -g ApplePressAndHoldEnabled
 ```
 
 ### GPG

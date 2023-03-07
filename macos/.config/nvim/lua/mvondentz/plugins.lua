@@ -48,7 +48,7 @@ return require('packer').startup(function(use)
 
     use('ggandor/leap.nvim')
 
-    use('jiangmiao/auto-pairs')
+    -- use('jiangmiao/auto-pairs')
 
     use('lewis6991/gitsigns.nvim')
 

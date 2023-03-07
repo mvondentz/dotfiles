@@ -30,7 +30,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     'gopls',
     'eslint',
-    'sumneko_lua',
+    -- 'sumneko_lua',
 })
 lsp.on_attach(on_attach)
 
@@ -61,7 +61,7 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ["<Tab>"] = cmp.mapping.complete(),
 })
 
