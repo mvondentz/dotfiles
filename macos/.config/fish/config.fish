@@ -1,4 +1,4 @@
-set fish_greeting "Remember to breathe"
+set fish_greeting "Remember to breathe..."
 
 set -gx TERM xterm-256color
 
@@ -32,6 +32,11 @@ alias gc "g checkout"
 alias gp "g push"
 alias ga "g commit --amend --no-edit"
 alias gtree "g diff-tree --no-commit-id --name-only -r"
+alias gwadd "git_add_worktree"
+
+function git_add_worktree -d "Add new Worktree"
+    g worktree add -b mvondentz/$argv $argv
+end
 
 command -qv nvim && alias vim nvim
 
