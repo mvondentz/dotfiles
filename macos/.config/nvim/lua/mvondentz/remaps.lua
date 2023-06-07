@@ -98,3 +98,6 @@ vim.keymap.set("n", "<leader>git", vim.cmd.Git);
 -- Leap
 map("n", "<leader>s", "<Plug>(leap-forward-to)", { noremap = false, silent = true })
 map("n", "<leader>S", "<Plug>(leap-backward-to)", { noremap = false, silent = true })
+
+
+map("n", "<leader>pp", ":call nvim_put(['fmt.Printf(\"%v %v \\n\", \"\",\"\")'], 'l', v:true, v:true) <CR>")
