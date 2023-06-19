@@ -5,7 +5,7 @@ end
 
 zen.setup {
     window = {
-        width = .45,
+        width = .65,
         options = {
             number = true,
             relativenumber = true,

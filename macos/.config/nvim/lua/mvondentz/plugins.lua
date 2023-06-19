@@ -29,8 +29,6 @@ return require('packer').startup(function(use)
 
     use('nvim-lualine/lualine.nvim')
 
-    use('kyazdani42/nvim-web-devicons')
-    use('ryanoasis/vim-devicons')
 
     use('nvim-tree/nvim-tree.lua')
 
@@ -81,6 +79,8 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
+
+    -- use('fatih/vim-go', { run = ':GoUpdateBinaries' })
 
     if packer_bootstrap then
         require('packer').sync()
