@@ -34,6 +34,7 @@ alias ga "g commit --amend --no-edit"
 alias gtree "g diff-tree --no-commit-id --name-only -r"
 alias gwadd "git_add_worktree"
 alias gundoammend "git reset --soft HEAD@{1}"
+alias grestoremain "git restore -s main"
 
 function git_add_worktree -d "Add new Worktree"
     g worktree add -b mvondentz/$argv $argv
