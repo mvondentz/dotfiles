@@ -44,11 +44,10 @@ return require('packer').startup(function(use)
 
     use('ThePrimeagen/git-worktree.nvim')
 
-    use("folke/zen-mode.nvim")
+    use('folke/zen-mode.nvim')
 
     use('ggandor/leap.nvim')
 
-    -- use('jiangmiao/auto-pairs')
 
     use('lewis6991/gitsigns.nvim')
 
@@ -83,6 +82,25 @@ return require('packer').startup(function(use)
     }
 
     -- use('fatih/vim-go', { run = ':GoUpdateBinaries' })
+
+    use('rcarriga/nvim-notify')
+
+    use {
+        'folke/noice.nvim',
+        requires = {
+            { 'MunifTanjim/nui.nvim' },
+            { 'rcarriga/nvim-notify' },
+        }
+    }
+
+    use('ray-x/guihua.lua')
+
+    -- use('jiangmiao/auto-pairs')
+    use('windwp/nvim-autopairs')
+
+    use('ThePrimeagen/harpoon')
+    ------------------------------
+
 
     if packer_bootstrap then
         require('packer').sync()

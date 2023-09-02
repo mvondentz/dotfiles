@@ -10,4 +10,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- autoformat on save
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+-- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]

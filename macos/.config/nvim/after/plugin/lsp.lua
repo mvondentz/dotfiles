@@ -17,7 +17,16 @@ function on_attach(client, bufnr)
     --vim.keymap.set("x", "<leader>ca", function() vim.lsp.buf.range_code_action() end, opts)
 
     -- find all in quicklist
-    vim.keymap.set("n", "<leader>fa", function() vim.lsp.buf.workspace_symbol() end, opts)
+    -- vim.keymap.set("n", "<leader>fa", function() vim.lsp.buf.workspace_symbol() end, opts)
+
+    -- Create a command `:Format` local to the LSP buffer
+    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+        if vim.lsp.buf.format then
+            vim.lsp.buf.format()
+        elseif vim.lsp.buf.formatting then
+            vim.lsp.buf.formatting()
+        end
+    end, { desc = 'Format current buffer with LSP' })
 end
 
 local present, lsp = pcall(require, "lsp-zero")
@@ -66,3 +75,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 lsp.setup_nvim_cmp({ mapping = cmp_mappings })
+
+
+-- autoformat on save
+vim.cmd [[autocmd BufWritePre * :Format]]

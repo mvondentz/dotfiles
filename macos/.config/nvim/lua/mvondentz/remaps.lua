@@ -15,8 +15,8 @@ map("v", "y", "ygv<Esc>")
 map("n", "<leader>fe", ":NvimTreeFindFileToggle<CR>")
 
 --Buffers navigation
-map("n", "<leader>n", ":bn<CR>")
-map("n", "<leader>b", ":bp<CR>")
+-- map("n", "<leader>n", ":bn<CR>")
+-- map("n", "<leader>b", ":bp<CR>")
 
 --Closing buffers
 map("n", "<leader>qq", ":bd<CR>")
@@ -58,12 +58,12 @@ map("n", "J", "mzJ`z")
 map("n", "Q", "<nop>")
 
 --DAP
-map("n", "<F10>", ":DapToggleBreakpoint <CR>")
-map("n", "<F8>", ":DapContinue <CR>")
-map("n", "<F7>", ":DapStepOut <CR>")
-map("n", "<F6>", ":DapStepOver <CR>")
-map("n", "<F5>", ":DapStepIn <CR>")
-map("n", "<F9>", ":DapTerminate <CR>")
+-- map("n", "<F10>", ":DapToggleBreakpoint <CR>")
+-- map("n", "<F8>", ":DapContinue <CR>")
+-- map("n", "<F7>", ":DapStepOut <CR>")
+-- map("n", "<F6>", ":DapStepOver <CR>")
+-- map("n", "<F5>", ":DapStepIn <CR>")
+-- map("n", "<F9>", ":DapTerminate <CR>")
 
 --Telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
@@ -73,6 +73,7 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
 map("n", "<leader>fs", "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>")
 map("n", "<leader>fd", "<cmd>Telescope dap configurations<CR>")
+-- map("n", "<leader>fh", "<cmd>Telescope harpoon marks<CR>")
 
 -- Find and replace current packeholder
 map("n", "<leader>rr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
@@ -101,3 +102,13 @@ map("n", "<leader>S", "<Plug>(leap-backward-to)", { noremap = false, silent = tr
 
 
 map("n", "<leader>pp", ":call nvim_put(['fmt.Printf(\"%v %v \\n\", \"\",\"\")'], 'l', v:true, v:true) <CR>")
+
+-- harpoon
+-- map("n", "<leader>n", ":lua require(\"harpoon.ui\").nav_next() <CR> ")
+-- map("n", "<leader>b", ":lua require(\"harpoon.ui\").nav_prev() <CR>")
+map("n", "<leader>a", ":lua require(\"harpoon.mark\").add_file() <CR>")
+map("n", "<leader>1", ":lua require(\"harpoon.ui\").nav_file(1) <CR>")
+map("n", "<leader>2", ":lua require(\"harpoon.ui\").nav_file(2) <CR>")
+map("n", "<leader>3", ":lua require(\"harpoon.ui\").nav_file(3) <CR>")
+map("n", "<leader>4", ":lua require(\"harpoon.ui\").nav_file(4) <CR>")
+map("n", "<leader>fh", ":lua require(\"harpoon.ui\").toggle_quick_menu() <CR>")
