@@ -13,6 +13,7 @@ map("v", "y", "ygv<Esc>")
 
 --NerdTree
 map("n", "<leader>fe", ":NvimTreeFindFileToggle<CR>")
+map("n", "<leader>fa", ":SymbolsOutline<CR>")
 
 --Buffers navigation
 -- map("n", "<leader>n", ":bn<CR>")
@@ -39,11 +40,11 @@ map("i", "<c-l>", "<right>")
 map("n", "<leader>tt", ":sp<bar>terminal <CR>")
 
 --Integration tests
-map("n", "<leader>ti", ":sp<bar>terminal t %:p ")
+map("n", "<leader>ti", ":sp<bar>terminal integration %:p ")
 --Local tests with cse,integration build tags
-map("n", "<leader>tu", ":sp<bar>terminal r %:p:h ")
+map("n", "<leader>tu", ":sp<bar>terminal unit %:p:h ")
 -- Run currently main file
-map("n", "<leader>rf", ":sp<bar>terminal m %:p ")
+map("n", "<leader>rf", ":sp<bar>terminal run %:p ")
 
 --Centralize while navigating
 map("n", "<C-d>", "<C-d>zz")

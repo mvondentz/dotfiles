@@ -53,7 +53,7 @@ local gopls_settings = {
     settings = {
         gopls = {
             usePlaceholders = true,
-            buildFlags = { "-tags=integration,cse" },
+            buildFlags = { "-tags=integration,cse,wkhtmltopdf" },
             gofumpt = true,
         }
     }

@@ -67,13 +67,12 @@ echo "test" | gpg --clearsign
 # tmux-plugin
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# Themes
-git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack (OLD)
-
-ln -s ~/code/github.com/MauricioDentz/dotfiles/macos/.config/colors/falcon.tmux.conf ~/.tmux/falcon.tmux.conf
+#
+ln -s ~/code/github.com/MauricioDentz/dotfiles/macos/.config/tmux ~/.config/tmux
 ```
 
 ### Karabiner Keymaps
+```
 ~/.config/karabiner/assets/complex_modifications/
 ln -s ~/code/github.com/MauricioDentz/dotfiles/macos/.config/karabiner ~/.config/karabiner
 ```

@@ -36,11 +36,13 @@ return require('packer').startup(function(use)
 
     use('numToStr/Comment.nvim')
 
+    use('lunacookies/vim-substrata')
+    -- use('aonemd/kuroi.vim')
     -- use('fenetikm/falcon')
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-    })
+    -- use({
+    --     'rose-pine/neovim',
+    --     as = 'rose-pine',
+    -- })
 
     use('ThePrimeagen/git-worktree.nvim')
 
@@ -99,8 +101,12 @@ return require('packer').startup(function(use)
     use('windwp/nvim-autopairs')
 
     use('ThePrimeagen/harpoon')
-    ------------------------------
 
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+    }
+
+    use 'simrat39/symbols-outline.nvim'
 
     if packer_bootstrap then
         require('packer').sync()
