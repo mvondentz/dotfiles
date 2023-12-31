@@ -1,4 +1,5 @@
-local present, rose_pine = pcall(require, "rose_pine")
+-- Rosa Pine setup
+local present, rose_pine = pcall(require, "rose-pine")
 if present then
     rose_pine.setup({
         --- @usage 'main' | 'moon'
@@ -42,14 +43,49 @@ if present then
     vim.cmd.colorscheme("rose-pine")
 end
 
+-- Catppuccin setup
+local present, cat = pcall(require, "catppuccin")
+if present then
+    cat.setup({
+        integrations = {
+            cmp = true,
+            gitsigns = true,
+            nvimtree = true,
+            treesitter = true,
+            notify = true,
+            mini = {
+                enabled = true,
+                indentscope_color = "",
+            },
+        }
+    })
+    vim.cmd.colorscheme("catppuccin-mocha")
+end
+
 
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
-vim.opt.background = "dark"
+-- vim.opt.background = "dark"
 
--- vim.cmd.colorscheme("falcon")
--- vim.cmd.colorscheme("kuroi")
-vim.cmd.colorscheme("substrata")
+local present, falc = pcall(require, "falcon")
+if present then
+    vim.cmd.colorscheme("falcon")
+end
+
+-- local present, subs = pcall(require, "substrata")
+-- if present then
+-- vim.cmd.colorscheme("substrata")
+-- end
+--
+local present, kanagawa = pcall(require, "kanagawa")
+if present then
+    kanagawa.load("dragon")
+end
+
+local present, tokyo = pcall(require, "tokyonight")
+if present then
+    vim.cmd.colorscheme("tokyonight-night")
+end
 
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

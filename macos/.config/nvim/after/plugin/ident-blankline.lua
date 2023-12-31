@@ -4,7 +4,7 @@ if not present then
 end
 
 vim.opt.list = true
--- vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 
 -- ident.setup {
@@ -15,14 +15,15 @@ vim.opt.listchars:append "eol:↴"
 --     -- space_char_blankline = " ",
 -- }
 
-local highlight = {
-    "CursorColumn",
-    "Whitespace",
-}
+-- local highlight = {
+-- "CursorColumn",
+-- "Whitespace",
+-- }
 ident.setup {
-    indent = { highlight = highlight, char = "" },
+    -- indent = { highlight = highlight, char = "" },
+    indent = { char = "" },
     whitespace = {
-        highlight = highlight,
+        -- highlight = highlight,
         remove_blankline_trail = false,
     },
     scope = { enabled = false },

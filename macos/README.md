@@ -11,6 +11,11 @@ brew install --cask iterm2 karabiner-elements font-hack-nerd-font docker amethys
 brew install fish git go node pyenv neovim ripgrep fd fisher direnv exa gpg aspell mongodb/brew/libmongocrypt pkg-config numpy tmux jq mongocli mongodb-community bat pinentry-mac docker git-delta
 ```
 
+### Macos
+```
+defaults write com.apple.dock autohide-delay -float 0; defaults write com.apple.dock autohide-time-modifier -int 0;killall Dock
+```
+
 ### NPM
 ```
 npm install -g neovim

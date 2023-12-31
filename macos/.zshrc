@@ -2,8 +2,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-#export TERM="xterm-256color"
+export TERM='screen-256color'
 export EDITOR='nvim'
+export VISUAL='nvim'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -87,7 +88,6 @@ export TERMINFO=/usr/share/terminfo
 ## Personnal Aliases
 ##-------------------
 
-
 alias psa='ps aux | grep'
 alias rm='rm -i'
 alias cp='cp -i'
@@ -124,7 +124,7 @@ alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 alias kill='kill -9'
 
 # -----------------------------------------------------------
-alias services='cd ~/code/github.com/EverlongProject/services.git/'
+alias services='cd ~/code/github.com/EverlongProject/services.git/ && v .'
 # -----------------------------------------------------------
 
 alias xs='cd'
@@ -158,6 +158,17 @@ alias gapf="g add . && ga && gpf"
 
 git_add_worktree (){
     g worktree add -b mvondentz/$1 $1
+}
+
+function git-delete-squashed {
+  local mainline=${1:-main}
+  git checkout -q $mainline || return
+  git for-each-ref refs/heads/ --format='%(refname:short)' | while read -r branch; do
+    local mergeBase=$(git merge-base $mainline $branch)
+    if [[ $(git cherry $mainline $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _)) == "-"* ]]; then
+      git branch -D $branch
+    fi
+  done
 }
 
 

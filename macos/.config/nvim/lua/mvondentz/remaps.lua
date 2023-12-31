@@ -12,7 +12,9 @@ vim.g.mapleader = ";"
 map("v", "y", "ygv<Esc>")
 
 --NerdTree
-map("n", "<leader>fe", ":NvimTreeFindFileToggle<CR>")
+-- map("n", "<leader>fe", ":NvimTreeFindFileToggle<CR>")
+-- Telescope-file-browser
+map("n", "<leader>fe", ":Neotree filesystem focus left float reveal<CR>")
 map("n", "<leader>fa", ":SymbolsOutline<CR>")
 
 --Buffers navigation
@@ -42,7 +44,9 @@ map("n", "<leader>tt", ":sp<bar>terminal <CR>")
 --Integration tests
 map("n", "<leader>ti", ":sp<bar>terminal integration %:p ")
 --Local tests with cse,integration build tags
-map("n", "<leader>tu", ":sp<bar>terminal unit %:p:h ")
+-- map("n", "<leader>tu", ":sp<bar>terminal unit %:p:h ")
+map("n", "<leader>tu", ":TestNearest -strategy=neovim_sticky <CR>")
+map("n", "<leader>tua", ":TestFile -strategy=neovim_sticky <CR>")
 -- Run currently main file
 map("n", "<leader>rf", ":sp<bar>terminal run %:p ")
 
@@ -98,8 +102,16 @@ vim.keymap.set("n", "<leader>git", vim.cmd.Git);
 
 
 -- Leap
-map("n", "<leader>s", "<Plug>(leap-forward-to)", { noremap = false, silent = true })
-map("n", "<leader>S", "<Plug>(leap-backward-to)", { noremap = false, silent = true })
+-- map("n", "<leader>s", "<Plug>(leap-forward-to)", { noremap = false, silent = true })
+-- map("n", "<leader>S", "<Plug>(leap-backward-to)", { noremap = false, silent = true })
+
+-- Flash
+map("n", "<leader>s",
+    "<cmd> lua require(\"flash\").jump({ search = { forward = true, wrap = false, multi_window = true }, })<CR>",
+    { noremap = false, silent = true })
+map("n", "<leader>S",
+    "<cmd> lua require(\"flash\").jump({ search = { forward = false, wrap = false, multi_window = true }, })<CR>",
+    { noremap = false, silent = true })
 
 
 map("n", "<leader>pp", ":call nvim_put(['fmt.Printf(\"%v %v \\n\", \"\",\"\")'], 'l', v:true, v:true) <CR>")
@@ -107,9 +119,9 @@ map("n", "<leader>pp", ":call nvim_put(['fmt.Printf(\"%v %v \\n\", \"\",\"\")'],
 -- harpoon
 -- map("n", "<leader>n", ":lua require(\"harpoon.ui\").nav_next() <CR> ")
 -- map("n", "<leader>b", ":lua require(\"harpoon.ui\").nav_prev() <CR>")
-map("n", "<leader>a", ":lua require(\"harpoon.mark\").add_file() <CR>")
-map("n", "<leader>1", ":lua require(\"harpoon.ui\").nav_file(1) <CR>")
-map("n", "<leader>2", ":lua require(\"harpoon.ui\").nav_file(2) <CR>")
-map("n", "<leader>3", ":lua require(\"harpoon.ui\").nav_file(3) <CR>")
-map("n", "<leader>4", ":lua require(\"harpoon.ui\").nav_file(4) <CR>")
-map("n", "<leader>fh", ":lua require(\"harpoon.ui\").toggle_quick_menu() <CR>")
+map("n", "<leader>a", "<cmd> lua require(\"harpoon\"):list():append()<CR>")
+map("n", "<leader>1", "<cmd> lua require(\"harpoon\"):list():select(1)<CR>")
+map("n", "<leader>2", "<cmd> lua require(\"harpoon\"):list():select(2)<CR>")
+map("n", "<leader>3", "<cmd> lua require(\"harpoon\"):list():select(3)<CR>")
+map("n", "<leader>4", "<cmd> lua require(\"harpoon\"):list():select(4)<CR>")
+map("n", "<leader>fh", "<cmd> lua require(\"harpoon\").ui:toggle_quick_menu(require(\"harpoon\"):list())<CR>")
