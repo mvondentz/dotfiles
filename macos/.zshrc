@@ -82,10 +82,20 @@ export PATH="$PATH:$BINPATH"
 
 export GOPATH="/usr/local/go"
 export PATH="$PATH:$GOPATH/bin"
+#
+export GOPROXY=direct
+
+# export GOPATH="${HOME}/workspace"
+# export GOROOT="${HOME}/go"
+#
+# export GOPATH="${HOME}/workspace"
+# export PATH="$GOPATH/bin:$PATH"
+# export GOROOT="/usr/local/go"
+# export PATH="$GOROOT/bin:$PATH"
 
 export TERMINFO=/usr/share/terminfo
 ##-------------------
-## Personnal Aliases
+## Personal Aliases
 ##-------------------
 
 alias psa='ps aux | grep'

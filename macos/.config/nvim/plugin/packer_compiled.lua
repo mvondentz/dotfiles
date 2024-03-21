@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/mvondentz/.cache/nvim/packer_hererocks/2.1.1700008891/share/lua/5.1/?.lua;/Users/mvondentz/.cache/nvim/packer_hererocks/2.1.1700008891/share/lua/5.1/?/init.lua;/Users/mvondentz/.cache/nvim/packer_hererocks/2.1.1700008891/lib/luarocks/rocks-5.1/?.lua;/Users/mvondentz/.cache/nvim/packer_hererocks/2.1.1700008891/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/mvondentz/.cache/nvim/packer_hererocks/2.1.1700008891/lib/lua/5.1/?.so"
+local package_path_str = "/Users/mvondentz/.cache/nvim/packer_hererocks/2.1.1710088188/share/lua/5.1/?.lua;/Users/mvondentz/.cache/nvim/packer_hererocks/2.1.1710088188/share/lua/5.1/?/init.lua;/Users/mvondentz/.cache/nvim/packer_hererocks/2.1.1710088188/lib/luarocks/rocks-5.1/?.lua;/Users/mvondentz/.cache/nvim/packer_hererocks/2.1.1710088188/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/mvondentz/.cache/nvim/packer_hererocks/2.1.1710088188/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -164,11 +164,6 @@ _G.packer_plugins = {
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["neo-tree.nvim"] = {
-    loaded = true,
-    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
-    url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
-  },
   ["noice.nvim"] = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/noice.nvim",
@@ -209,6 +204,11 @@ _G.packer_plugins = {
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
+  ["oil.nvim"] = {
+    loaded = true,
+    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/oil.nvim",
+    url = "https://github.com/stevearc/oil.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -245,6 +245,11 @@ _G.packer_plugins = {
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["true-zen.nvim"] = {
+    loaded = true,
+    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/true-zen.nvim",
+    url = "https://github.com/pocco81/true-zen.nvim"
+  },
   ["vim-devicons"] = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/vim-devicons",
@@ -274,11 +279,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
-  },
-  ["zen-mode.nvim"] = {
-    loaded = true,
-    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
-    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 

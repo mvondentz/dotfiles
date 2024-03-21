@@ -19,15 +19,18 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        }
-    }
+    -- use {
+    --     "nvim-neo-tree/neo-tree.nvim",
+    --     branch = "v3.x",
+    --     requires = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-tree/nvim-web-devicons",
+    --         "MunifTanjim/nui.nvim",
+    --     }
+    -- }
+
+    use 'stevearc/oil.nvim'
+
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
@@ -55,7 +58,8 @@ return require('packer').startup(function(use)
 
     use('ThePrimeagen/git-worktree.nvim')
 
-    use('folke/zen-mode.nvim')
+    use 'pocco81/true-zen.nvim'
+    -- use('folke/zen-mode.nvim')
 
     -- use('ggandor/leap.nvim')
     use 'folke/flash.nvim'

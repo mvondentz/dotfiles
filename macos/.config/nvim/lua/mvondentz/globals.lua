@@ -28,3 +28,5 @@ vim.opt.undofile = true
 vim.opt.autoread = true           -- Update vim after file update from outside
 vim.opt.autowrite = true          --
 vim.opt.clipboard = "unnamedplus" --macos copy
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true

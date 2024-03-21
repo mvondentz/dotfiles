@@ -14,7 +14,8 @@ map("v", "y", "ygv<Esc>")
 --NerdTree
 -- map("n", "<leader>fe", ":NvimTreeFindFileToggle<CR>")
 -- Telescope-file-browser
-map("n", "<leader>fe", ":Neotree filesystem focus left float reveal<CR>")
+-- map("n", "<leader>fe", ":Neotree filesystem focus left float reveal<CR>")
+map("n", "<leader>fe", ":Oil<CR>")
 map("n", "<leader>fa", ":SymbolsOutline<CR>")
 
 --Buffers navigation
@@ -92,7 +93,8 @@ map("n", "<leader>h", "<C-w>h")
 map("n", "<leader>l", "<C-w>l")
 map("n", "<leader>j", "<C-w>j")
 map("n", "<leader>k", "<C-w>k")
-map("n", "<leader>z", "<cmd> ZenMode <CR>")
+-- map("n", "<leader>z", "<cmd> ZenMode <CR>")
+map("n", "<leader>z", "<cmd> TZAtaraxis <CR>")
 
 -- fugitive
 vim.keymap.set("n", "<leader>git", vim.cmd.Git);

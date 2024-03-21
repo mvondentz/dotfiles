@@ -104,17 +104,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- end
         -- illuminate.on_attach(ev)
 
-        -- Create a command `:Format` local to the LSP buffer
-        vim.api.nvim_buf_create_user_command(ev.buf, 'Format', function(_)
-            if vim.lsp.buf.format then
-                vim.lsp.buf.format()
-            elseif vim.lsp.buf.formatting then
-                vim.lsp.buf.formatting()
-            end
-        end, { desc = 'Format current buffer with LSP' })
+        -- -- Create a command `:Format` local to the LSP buffer
+        -- vim.api.nvim_buf_create_user_command(ev.buf, 'Format', function(_)
+        --     if vim.lsp.buf.format then
+        --         vim.lsp.buf.format()
+        --     elseif vim.lsp.buf.formatting then
+        --         vim.lsp.buf.formatting()
+        --     end
+        -- end, { desc = 'Format current buffer with LSP' })
     end,
 })
 
 
 -- autoformat on save
-vim.cmd [[autocmd BufWritePre * :Format]]
+-- vim.cmd [[autocmd BufWritePre * :Format]]
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format({ filter = function(client) return client.supports_method("textDocument/formatting") end, bufnr = vim.api.nvim_get_current_buf() })]]
