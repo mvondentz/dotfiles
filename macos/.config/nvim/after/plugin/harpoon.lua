@@ -1,4 +1,4 @@
-local present, harpoon = pcall(require, "ThePrimeagen/harpoon")
+local present, harpoon = pcall(require, "harpoon")
 if not present then
     return
 end

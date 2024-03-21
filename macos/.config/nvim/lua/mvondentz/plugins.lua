@@ -91,7 +91,7 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
 
-    -- use('fatih/vim-go', { run = ':GoUpdateBinaries' })
+    use('fatih/vim-go', { run = ':GoUpdateBinaries' })
 
     use('rcarriga/nvim-notify')
 
