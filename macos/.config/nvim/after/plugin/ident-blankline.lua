@@ -19,7 +19,11 @@ vim.opt.listchars:append "eol:↴"
 -- "CursorColumn",
 -- "Whitespace",
 -- }
-ident.setup {
+
+ident.setup()
+
+
+ident.setup({
     -- indent = { highlight = highlight, char = "" },
     indent = { char = "" },
     whitespace = {
@@ -28,3 +32,4 @@ ident.setup {
     },
     scope = { enabled = false },
 }
+)

@@ -118,4 +118,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- autoformat on save
 -- vim.cmd [[autocmd BufWritePre * :Format]]
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format({ filter = function(client) return client.supports_method("textDocument/formatting") end, bufnr = vim.api.nvim_get_current_buf() })]]
+-- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format({ filter = function(client) return client.supports_method("textDocument/formatting") end, bufnr = vim.api.nvim_get_current_buf() })]]

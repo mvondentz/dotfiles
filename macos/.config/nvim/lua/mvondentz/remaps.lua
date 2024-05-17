@@ -57,19 +57,19 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "nzzzv")
 
--- Bettern join lines
+-- Better join lines
 map("n", "J", "mzJ`z")
 
 -- nop
 map("n", "Q", "<nop>")
 
 --DAP
--- map("n", "<F10>", ":DapToggleBreakpoint <CR>")
--- map("n", "<F8>", ":DapContinue <CR>")
--- map("n", "<F7>", ":DapStepOut <CR>")
--- map("n", "<F6>", ":DapStepOver <CR>")
--- map("n", "<F5>", ":DapStepIn <CR>")
--- map("n", "<F9>", ":DapTerminate <CR>")
+map("n", "<F10>", ":DapToggleBreakpoint <CR>")
+map("n", "<F8>", ":DapContinue <CR>")
+map("n", "<F7>", ":DapStepOut <CR>")
+map("n", "<F6>", ":DapStepOver <CR>")
+map("n", "<F5>", ":DapStepIn <CR>")
+map("n", "<F9>", ":DapTerminate <CR>")
 
 --Telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>")

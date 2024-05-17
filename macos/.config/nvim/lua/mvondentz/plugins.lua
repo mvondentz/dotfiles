@@ -66,13 +66,12 @@ return require('packer').startup(function(use)
 
     use('lewis6991/gitsigns.nvim')
 
-    -- use {
-    --     'rcarriga/nvim-dap-ui',
-    --     requires = {
-    --         { 'mfussenegger/nvim-dap' },
-    --         { 'nvim-telescope/telescope-dap.nvim' },
-    --     }
-    -- }
+    -- DAP
+    -- use 'rcarriga/nvim-dap-ui'
+    -- use 'theHamsta/nvim-dap-virtual-text'
+    -- use 'nvim-telescope/telescope-dap.nvim'
+    -- use 'nvim-neotest/nvim-nio'
+    -- use 'mfussenegger/nvim-dap'
 
     -- LSP
     use {
@@ -117,9 +116,9 @@ return require('packer').startup(function(use)
     }
     use { 'letieu/harpoon-lualine' }
 
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-    }
+    -- use {
+    --     'lukas-reineke/indent-blankline.nvim',
+    -- }
 
     use 'simrat39/symbols-outline.nvim'
 

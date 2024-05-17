@@ -3,6 +3,13 @@ if not present then
     return
 end
 
+local present, dapui = pcall(require, "dapui")
+if not present then
+    return
+end
+
+dapui.setup()
+
 dap.adapters.delve = {
     type = 'server',
     kort = '${port}',
@@ -30,12 +37,6 @@ dap.configurations.go = {
 }
 
 
-local present, dapui = pcall(require, "dapui")
-if not present then
-    return
-end
-
-dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
 end
@@ -45,3 +46,8 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
 end
+
+-- Eval var under cursor
+vim.keymap.set("n", "<leader>?", function()
+    require("dapui").eval(nil, { enter = true })
+end)
