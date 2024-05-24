@@ -12,3 +12,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- autoformat on save
 -- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format({ filter = function(client) return client.supports_method("textDocument/formatting") end, bufnr = vim.api.nvim_get_current_buf() })]]
+
+-- Use open instead of netwr
+vim.api.nvim_create_user_command(
+    'Browse',
+    function(opts)
+        vim.fn.system { 'open', opts.fargs[1] }
+    end,
+    { nargs = 1 }
+)
