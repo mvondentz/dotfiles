@@ -59,7 +59,7 @@ local options = {
             }
         },
     },
-    extensions_list = { "themes", "terms", "git_worktree", "harpoon" },
+    extensions_list = { "themes", "terms", "git_worktree" },
 }
 
 telescope.setup(options)

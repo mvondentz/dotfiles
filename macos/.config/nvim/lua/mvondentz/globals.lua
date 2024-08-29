@@ -30,3 +30,5 @@ vim.opt.autowrite = true          --
 vim.opt.clipboard = "unnamedplus" --macos copy
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
+vim.opt.laststatus = 3     -- one status bar for all splits
+vim.opt.winbar = "%=%m %f" -- win bar above the windown

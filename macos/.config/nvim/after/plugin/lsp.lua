@@ -31,7 +31,7 @@ end
 mason.setup()
 masonlsp.setup(
     {
-        ensure_installed = { "gopls", "lua_ls", "yamlls", "eslint", "tsserver" },
+        ensure_installed = { "gopls", "lua_ls", "yamlls", "eslint", "ts_ls" },
         automatic_installation = true,
     }
 )
@@ -65,7 +65,7 @@ lspconfig.gopls.setup
 lspconfig.lua_ls.setup {}
 lspconfig.yamlls.setup {}
 lspconfig.eslint.setup {}
-lspconfig.tsserver.setup {}
+lspconfig.ts_ls.setup {}
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),

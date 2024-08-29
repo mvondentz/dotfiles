@@ -33,17 +33,17 @@ return require('packer').startup(function(use)
 
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use('nvim-treesitter/playground')
+    -- use('nvim-treesitter/playground')
 
-    use('tpope/vim-fugitive')
-    use('tpope/vim-rhubarb')
+    use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
 
-    use('nvim-lualine/lualine.nvim')
+    use 'nvim-lualine/lualine.nvim'
 
-    use('kyazdani42/nvim-web-devicons')
-    use('ryanoasis/vim-devicons')
+    use 'kyazdani42/nvim-web-devicons'
+    use 'ryanoasis/vim-devicons'
 
-    use('numToStr/Comment.nvim')
+    use 'numToStr/Comment.nvim'
 
     --  Themes
     -- use { "catppuccin/nvim", as = "catppuccin" }
@@ -56,15 +56,15 @@ return require('packer').startup(function(use)
     --     as = 'rose-pine',
     -- })
 
-    use('ThePrimeagen/git-worktree.nvim')
+    use 'ThePrimeagen/git-worktree.nvim'
 
-    use 'pocco81/true-zen.nvim'
+    -- use 'pocco81/true-zen.nvim'
     -- use('folke/zen-mode.nvim')
 
     -- use('ggandor/leap.nvim')
     use 'folke/flash.nvim'
 
-    use('lewis6991/gitsigns.nvim')
+    use 'lewis6991/gitsigns.nvim'
 
     -- DAP
     -- use 'rcarriga/nvim-dap-ui'
@@ -79,24 +79,22 @@ return require('packer').startup(function(use)
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
     }
+
     use { "RRethy/vim-illuminate" }
     -- use { "jose-elias-alvarez/null-ls.nvim" }
 
     -- Completions
-    use { "hrsh7th/nvim-cmp" }         -- The completion plugin
-    use { "hrsh7th/cmp-buffer" }       -- buffer completions
-    use { "hrsh7th/cmp-path" }         -- path completions
+    use "hrsh7th/nvim-cmp"
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
-    use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
-    use { "hrsh7th/cmp-nvim-lsp" }
-    use { "hrsh7th/cmp-nvim-lua" }
-    -- Snippets
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
 
     -- use('fatih/vim-go', { run = ':GoUpdateBinaries' })
 
-    use('rcarriga/nvim-notify')
+    use 'rcarriga/nvim-notify'
 
     use {
         'folke/noice.nvim',
@@ -106,22 +104,21 @@ return require('packer').startup(function(use)
         }
     }
 
-    use('ray-x/guihua.lua')
+    use 'ray-x/guihua.lua'
 
-    use('windwp/nvim-autopairs')
+    use 'windwp/nvim-autopairs'
 
     use {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
     }
-    use { 'letieu/harpoon-lualine' }
+    use 'letieu/harpoon-lualine'
 
     -- use {
     --     'lukas-reineke/indent-blankline.nvim',
     -- }
 
     use 'simrat39/symbols-outline.nvim'
-
 
     use {
         "folke/todo-comments.nvim",
@@ -132,8 +129,30 @@ return require('packer').startup(function(use)
         end
     }
 
-    use('vim-test/vim-test')
+    use 'vim-test/vim-test'
 
+    -- use {
+    --     'rest-nvim/rest.nvim',
+    --     requires = {
+    --         { "nvim-lua/plenary.nvim" },
+    --         { "nvim-neotest/nvim-nio" },
+    --         { "j-hui/fidget.nvim" },
+    --         { "manoelcampos/xml2lua" },
+    --     }
+    -- }
+
+    -- use 'tpope/vim-dadbod'
+    -- use 'kristijanhusak/vim-dadbod-completion'
+    -- use 'kristijanhusak/vim-dadbod-ui'
+    -- use 'tpope/vim-dotenv'
+
+    -- use { "jellydn/hurl.nvim",
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-treesitter/nvim-treesitter"
+    --     },
+    -- }
 
     if packer_bootstrap then
         require('packer').sync()

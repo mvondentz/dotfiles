@@ -80,8 +80,10 @@ export BINPATH="$BINPATH:~/.local/bin"
 export BINPATH="$BINPATH:/opt/homebrew/bin"
 export PATH="$PATH:$BINPATH"
 
-export GOPATH="/usr/local/go"
+export GOPATH="/Users/mvondentz/go/"
 export PATH="$PATH:$GOPATH/bin"
+export GOROOT="/usr/local/go"
+export PATH="$PATH:$GOROOT/bin"
 #
 export GOPROXY=direct
 

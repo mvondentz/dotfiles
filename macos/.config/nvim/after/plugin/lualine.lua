@@ -3,11 +3,11 @@ if not present then
     return
 end
 
-
 lualine.setup {
     options = {
         icons_enabled = true,
-        theme = 'auto',
+        -- theme = 'auto',
+        theme = 'codedark',
         component_separators = '|',
         section_separators = '',
         disabled_filetypes = {},

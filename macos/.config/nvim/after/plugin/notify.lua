@@ -3,7 +3,6 @@ if not present then
     return
 end
 
-
 notify.setup(
     {
         background_colour = "#000000",
@@ -17,9 +16,9 @@ notify.setup(
         },
         level = 2,
         minimum_width = 50,
-        render = "compact",
+        render = "wrapped-compact",
         stages = "fade_in_slide_out",
-        timeout = 350,
+        timeout = 450,
         top_down = false
     }
 )

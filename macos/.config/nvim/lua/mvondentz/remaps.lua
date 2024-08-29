@@ -50,6 +50,7 @@ map("n", "<leader>tu", ":TestNearest -strategy=neovim_sticky <CR>")
 map("n", "<leader>tua", ":TestFile -strategy=neovim_sticky <CR>")
 -- Run currently main file
 map("n", "<leader>rf", ":sp<bar>terminal run %:p ")
+map("n", "<leader>rd", ":sp<bar>terminal rundir %:p ")
 
 --Centralize while navigating
 map("n", "<C-d>", "<C-d>zz")
@@ -121,9 +122,16 @@ map("n", "<leader>pp", ":call nvim_put(['fmt.Printf(\"%v %v \\n\", \"\",\"\")'],
 -- harpoon
 -- map("n", "<leader>n", ":lua require(\"harpoon.ui\").nav_next() <CR> ")
 -- map("n", "<leader>b", ":lua require(\"harpoon.ui\").nav_prev() <CR>")
-map("n", "<leader>a", "<cmd> lua require(\"harpoon\"):list():append()<CR>")
+map("n", "<leader>a", "<cmd> lua require(\"harpoon\"):list():add()<CR>")
 map("n", "<leader>1", "<cmd> lua require(\"harpoon\"):list():select(1)<CR>")
 map("n", "<leader>2", "<cmd> lua require(\"harpoon\"):list():select(2)<CR>")
 map("n", "<leader>3", "<cmd> lua require(\"harpoon\"):list():select(3)<CR>")
 map("n", "<leader>4", "<cmd> lua require(\"harpoon\"):list():select(4)<CR>")
-map("n", "<leader>fh", "<cmd> lua require(\"harpoon\").ui:toggle_quick_menu(require(\"harpoon\"):list())<CR>")
+-- map("n", "<leader>fh", "<cmd> lua require(\"harpoon\").ui:toggle_quick_menu(require(\"harpoon\"):list())<CR>")
+
+-- map("n", "<leader>fh", "<cmd> toggle_telescope(harpoon:list()) end, { desc = \"Open harpoon window\" }")
+
+
+-- REST
+-- m
+-- ap("n", "<leader>rest", "<cmd>Rest run <CR>")
