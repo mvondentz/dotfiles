@@ -59,7 +59,7 @@ return require('packer').startup(function(use)
     use 'ThePrimeagen/git-worktree.nvim'
 
     -- use 'pocco81/true-zen.nvim'
-    -- use('folke/zen-mode.nvim')
+    use('folke/zen-mode.nvim')
 
     -- use('ggandor/leap.nvim')
     use 'folke/flash.nvim'
@@ -94,15 +94,13 @@ return require('packer').startup(function(use)
 
     -- use('fatih/vim-go', { run = ':GoUpdateBinaries' })
 
-    use 'rcarriga/nvim-notify'
-
-    use {
-        'folke/noice.nvim',
-        requires = {
-            { 'MunifTanjim/nui.nvim' },
-            { 'rcarriga/nvim-notify' },
-        }
-    }
+    -- use {
+    --     'folke/noice.nvim',
+    --     requires = {
+    --         { 'MunifTanjim/nui.nvim' },
+    --         { 'rcarriga/nvim-notify' },
+    --     }
+    -- }
 
     use 'ray-x/guihua.lua'
 

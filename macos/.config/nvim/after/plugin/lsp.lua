@@ -44,6 +44,16 @@ lspconfig.gopls.setup
     root_dir = lsputil.root_pattern("go.work", "go.mod", ".git"),
     settings = {
         gopls = {
+            --- experimental
+            gofumpt = true,
+            codelenses = {
+                generate = true, -- Enable code lens for generating code
+                gc_details = true,
+                test = true,
+            },
+            semanticTokens = true,
+            --- experimental
+
             buildFlags = { "-tags=integration,cse,wkhtmltopdf" },
             experimentalPostfixCompletions = true,
             completeUnimported = true,

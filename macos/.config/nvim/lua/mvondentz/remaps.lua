@@ -94,8 +94,8 @@ map("n", "<leader>h", "<C-w>h")
 map("n", "<leader>l", "<C-w>l")
 map("n", "<leader>j", "<C-w>j")
 map("n", "<leader>k", "<C-w>k")
--- map("n", "<leader>z", "<cmd> ZenMode <CR>")
-map("n", "<leader>z", "<cmd> TZAtaraxis <CR>")
+map("n", "<leader>z", "<cmd> ZenMode <CR>")
+-- map("n", "<leader>z", "<cmd> TZAtaraxis <CR>")
 
 -- fugitive
 vim.keymap.set("n", "<leader>git", vim.cmd.Git);
@@ -117,7 +117,7 @@ map("n", "<leader>S",
     { noremap = false, silent = true })
 
 
-map("n", "<leader>pp", ":call nvim_put(['fmt.Printf(\"%v %v \\n\", \"\",\"\")'], 'l', v:true, v:true) <CR>")
+-- map("n", "<leader>pp", ":call nvim_put(['fmt.Printf(\"%v %v \\n\", \"\",\"\")'], 'l', v:true, v:true) <CR>")
 
 -- harpoon
 -- map("n", "<leader>n", ":lua require(\"harpoon.ui\").nav_next() <CR> ")
@@ -126,7 +126,8 @@ map("n", "<leader>a", "<cmd> lua require(\"harpoon\"):list():add()<CR>")
 map("n", "<leader>1", "<cmd> lua require(\"harpoon\"):list():select(1)<CR>")
 map("n", "<leader>2", "<cmd> lua require(\"harpoon\"):list():select(2)<CR>")
 map("n", "<leader>3", "<cmd> lua require(\"harpoon\"):list():select(3)<CR>")
-map("n", "<leader>4", "<cmd> lua require(\"harpoon\"):list():select(4)<CR>")
+map("n", "<leader>5", "<cmd> lua require(\"harpoon\"):list():select(5)<CR>")
+map("n", "<leader>6", "<cmd> lua require(\"harpoon\"):list():select(6)<CR>")
 -- map("n", "<leader>fh", "<cmd> lua require(\"harpoon\").ui:toggle_quick_menu(require(\"harpoon\"):list())<CR>")
 
 -- map("n", "<leader>fh", "<cmd> toggle_telescope(harpoon:list()) end, { desc = \"Open harpoon window\" }")
