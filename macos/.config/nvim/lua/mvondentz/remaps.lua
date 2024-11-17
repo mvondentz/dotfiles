@@ -10,11 +10,9 @@ vim.g.mapleader = ";"
 
 --amazing yank to keep cursor
 map("v", "y", "ygv<Esc>")
+-- map("n", "p", "\"_dP")
 
---NerdTree
--- map("n", "<leader>fe", ":NvimTreeFindFileToggle<CR>")
--- Telescope-file-browser
--- map("n", "<leader>fe", ":Neotree filesystem focus left float reveal<CR>")
+--Oil
 map("n", "<leader>fe", ":Oil<CR>")
 map("n", "<leader>fa", ":SymbolsOutline<CR>")
 
@@ -44,12 +42,11 @@ map("n", "<leader>tt", ":sp<bar>terminal <CR>")
 
 --Integration tests
 map("n", "<leader>ti", ":sp<bar>terminal integration %:p ")
---Local tests with cse,integration build tags
--- map("n", "<leader>tu", ":sp<bar>terminal unit %:p:h ")
 map("n", "<leader>tu", ":TestNearest -strategy=neovim_sticky <CR>")
 map("n", "<leader>tua", ":TestFile -strategy=neovim_sticky <CR>")
--- Run currently main file
+-- Run main file
 map("n", "<leader>rf", ":sp<bar>terminal run %:p ")
+-- Run main dir
 map("n", "<leader>rd", ":sp<bar>terminal rundir %:p ")
 
 --Centralize while navigating
@@ -65,12 +62,12 @@ map("n", "J", "mzJ`z")
 map("n", "Q", "<nop>")
 
 --DAP
-map("n", "<F10>", ":DapToggleBreakpoint <CR>")
-map("n", "<F8>", ":DapContinue <CR>")
-map("n", "<F7>", ":DapStepOut <CR>")
-map("n", "<F6>", ":DapStepOver <CR>")
-map("n", "<F5>", ":DapStepIn <CR>")
-map("n", "<F9>", ":DapTerminate <CR>")
+-- map("n", "<F10>", ":DapToggleBreakpoint <CR>")
+-- map("n", "<F8>", ":DapContinue <CR>")
+-- map("n", "<F7>", ":DapStepOut <CR>")
+-- map("n", "<F6>", ":DapStepOver <CR>")
+-- map("n", "<F5>", ":DapStepIn <CR>")
+-- map("n", "<F9>", ":DapTerminate <CR>")
 
 --Telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
@@ -80,6 +77,7 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
 map("n", "<leader>fs", "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>")
 map("n", "<leader>fd", "<cmd>Telescope dap configurations<CR>")
+-- currently in harpoon.lua
 -- map("n", "<leader>fh", "<cmd>Telescope harpoon marks<CR>")
 
 -- Find and replace current packeholder
@@ -94,19 +92,12 @@ map("n", "<leader>h", "<C-w>h")
 map("n", "<leader>l", "<C-w>l")
 map("n", "<leader>j", "<C-w>j")
 map("n", "<leader>k", "<C-w>k")
+
+-- Zen Mode
 map("n", "<leader>z", "<cmd> ZenMode <CR>")
--- map("n", "<leader>z", "<cmd> TZAtaraxis <CR>")
 
 -- fugitive
 vim.keymap.set("n", "<leader>git", vim.cmd.Git);
-
--- undortree
--- vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-
-
--- Leap
--- map("n", "<leader>s", "<Plug>(leap-forward-to)", { noremap = false, silent = true })
--- map("n", "<leader>S", "<Plug>(leap-backward-to)", { noremap = false, silent = true })
 
 -- Flash
 map("n", "<leader>s",
@@ -126,13 +117,6 @@ map("n", "<leader>a", "<cmd> lua require(\"harpoon\"):list():add()<CR>")
 map("n", "<leader>1", "<cmd> lua require(\"harpoon\"):list():select(1)<CR>")
 map("n", "<leader>2", "<cmd> lua require(\"harpoon\"):list():select(2)<CR>")
 map("n", "<leader>3", "<cmd> lua require(\"harpoon\"):list():select(3)<CR>")
+map("n", "<leader>4", "<cmd> lua require(\"harpoon\"):list():select(4)<CR>")
 map("n", "<leader>5", "<cmd> lua require(\"harpoon\"):list():select(5)<CR>")
 map("n", "<leader>6", "<cmd> lua require(\"harpoon\"):list():select(6)<CR>")
--- map("n", "<leader>fh", "<cmd> lua require(\"harpoon\").ui:toggle_quick_menu(require(\"harpoon\"):list())<CR>")
-
--- map("n", "<leader>fh", "<cmd> toggle_telescope(harpoon:list()) end, { desc = \"Open harpoon window\" }")
-
-
--- REST
--- m
--- ap("n", "<leader>rest", "<cmd>Rest run <CR>")

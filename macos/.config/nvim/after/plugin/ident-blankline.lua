@@ -3,9 +3,9 @@ if not present then
     return
 end
 
-vim.opt.list = true
-vim.opt.listchars:append "space:⋅"
-vim.opt.listchars:append "eol:↴"
+-- vim.opt.list = true
+-- vim.opt.listchars:append "space:⋅"
+-- vim.opt.listchars:append "eol:↴"
 
 -- ident.setup {
 --     show_current_context = true,
@@ -23,13 +23,12 @@ vim.opt.listchars:append "eol:↴"
 ident.setup()
 
 
-ident.setup({
-    -- indent = { highlight = highlight, char = "" },
-    indent = { char = "" },
-    whitespace = {
-        -- highlight = highlight,
-        remove_blankline_trail = false,
-    },
-    scope = { enabled = false },
-}
-)
+-- ident.setup() {
+--     -- indent = { highlight = highlight, char = "" },
+--     indent = { char = "" },
+--     whitespace = {
+--         -- highlight = highlight,
+--         remove_blankline_trail = false,
+--     },
+--     scope = { enabled = false },
+-- }

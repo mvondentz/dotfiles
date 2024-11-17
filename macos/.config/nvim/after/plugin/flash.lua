@@ -58,7 +58,7 @@ flash.setup {
         -- add pattern to search register
         register = false,
         -- clear highlight after jump
-        nohlsearch = false,
+        nohlsearch = true,
         -- automatically jump when there is only one match
         autojump = false,
         -- You can force inclusive/exclusive jumps by setting the

@@ -19,21 +19,9 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    -- use {
-    --     "nvim-neo-tree/neo-tree.nvim",
-    --     branch = "v3.x",
-    --     requires = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-tree/nvim-web-devicons",
-    --         "MunifTanjim/nui.nvim",
-    --     }
-    -- }
-
     use 'stevearc/oil.nvim'
 
-
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    -- use('nvim-treesitter/playground')
 
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
@@ -58,10 +46,8 @@ return require('packer').startup(function(use)
 
     use 'ThePrimeagen/git-worktree.nvim'
 
-    -- use 'pocco81/true-zen.nvim'
     use('folke/zen-mode.nvim')
 
-    -- use('ggandor/leap.nvim')
     use 'folke/flash.nvim'
 
     use 'lewis6991/gitsigns.nvim'
@@ -81,7 +67,6 @@ return require('packer').startup(function(use)
     }
 
     use { "RRethy/vim-illuminate" }
-    -- use { "jose-elias-alvarez/null-ls.nvim" }
 
     -- Completions
     use "hrsh7th/nvim-cmp"
@@ -91,6 +76,14 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
+
+
+    use({
+        "L3MON4D3/LuaSnip",
+        tag = "v2.*",
+        run = "make install_jsregexp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+    })
 
     -- use('fatih/vim-go', { run = ':GoUpdateBinaries' })
 
@@ -112,9 +105,7 @@ return require('packer').startup(function(use)
     }
     use 'letieu/harpoon-lualine'
 
-    -- use {
-    --     'lukas-reineke/indent-blankline.nvim',
-    -- }
+    use 'lukas-reineke/indent-blankline.nvim'
 
     use 'simrat39/symbols-outline.nvim'
 
@@ -129,28 +120,21 @@ return require('packer').startup(function(use)
 
     use 'vim-test/vim-test'
 
-    -- use {
-    --     'rest-nvim/rest.nvim',
-    --     requires = {
-    --         { "nvim-lua/plenary.nvim" },
-    --         { "nvim-neotest/nvim-nio" },
-    --         { "j-hui/fidget.nvim" },
-    --         { "manoelcampos/xml2lua" },
-    --     }
-    -- }
 
     -- use 'tpope/vim-dadbod'
     -- use 'kristijanhusak/vim-dadbod-completion'
     -- use 'kristijanhusak/vim-dadbod-ui'
     -- use 'tpope/vim-dotenv'
 
-    -- use { "jellydn/hurl.nvim",
-    --     dependencies = {
-    --         "MunifTanjim/nui.nvim",
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-treesitter/nvim-treesitter"
-    --     },
-    -- }
+    -- Avante AI
+    use 'nvim-treesitter/nvim-treesitter'
+    use 'stevearc/dressing.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use 'MunifTanjim/nui.nvim'
+    use 'nvim-tree/nvim-web-devicons'
+    use 'HakonHarnes/img-clip.nvim'
+    use 'MeanderingProgrammer/render-markdown.nvim'
+    use 'yetone/avante.nvim'
 
     if packer_bootstrap then
         require('packer').sync()

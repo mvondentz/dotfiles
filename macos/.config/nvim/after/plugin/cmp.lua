@@ -1,3 +1,6 @@
+require("luasnip.loaders.from_vscode").lazy_load()
+
+
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
     return
@@ -86,9 +89,10 @@ cmp.setup {
         },
         -- Accept currently selected item. If none selected, `select` first item.
         -- Set `select` to `false` to only confirm explicitly selected items.
-        ["<CR>"] = cmp.mapping.confirm { select = true },
-        ["<Tab>"] = nxtmap,
-        ["<S-Tab>"] = prvmap,
+        ["<Tab>"] = cmp.mapping.confirm { select = true },
+        ["<CR>"] = cmp.config.disable,
+        -- ["<Tab>"] = nxtmap,
+        -- ["<S-Tab>"] = prvmap,
     },
     formatting = {
         fields = { "kind", "abbr", "menu" },

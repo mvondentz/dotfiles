@@ -79,6 +79,16 @@ _G.packer_plugins = {
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  LuaSnip = {
+    loaded = true,
+    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  ["avante.nvim"] = {
+    loaded = true,
+    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/avante.nvim",
+    url = "https://github.com/yetone/avante.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -103,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
+  },
+  ["dressing.nvim"] = {
+    loaded = true,
+    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/dressing.nvim",
+    url = "https://github.com/stevearc/dressing.nvim"
   },
   ["flash.nvim"] = {
     loaded = true,
@@ -134,6 +149,16 @@ _G.packer_plugins = {
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/harpoon-lualine",
     url = "https://github.com/letieu/harpoon-lualine"
   },
+  ["img-clip.nvim"] = {
+    loaded = true,
+    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/img-clip.nvim",
+    url = "https://github.com/HakonHarnes/img-clip.nvim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -148,6 +173,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -188,6 +218,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["render-markdown.nvim"] = {
+    loaded = true,
+    path = "/Users/mvondentz/.local/share/nvim/site/pack/packer/start/render-markdown.nvim",
+    url = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
   },
   ["symbols-outline.nvim"] = {
     loaded = true,
