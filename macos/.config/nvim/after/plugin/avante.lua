@@ -56,9 +56,9 @@ avante.setup({
         support_paste_from_clipboard = false,
     },
     mappings = {
-        ask = "<leader>ha", -- ask
-        edit = "<nop>",     -- edit
-        refresh = "<nop>",  -- refresh
+        ask = "<leader>g", -- ask
+        edit = "<nop>",    -- edit
+        refresh = "<nop>", -- refresh
         diff = {
             ours = "co",
             theirs = "ct",
