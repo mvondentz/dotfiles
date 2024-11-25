@@ -12,6 +12,9 @@ local options = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = {
+            function()
+                return vim.fn["copilot#GetStatus"]()
+            end,
             -- {
             --     'filename',
             --     path = 1,
