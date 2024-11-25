@@ -1,9 +1,4 @@
-local present, comment = pcall(require, "Comment")
-if not present then
-    return
-end
-
-comment.setup({
+local options = {
     padding = true,
     sticky = true,
     ignore = nil,
@@ -19,5 +14,9 @@ comment.setup({
         extra = true,
     },
     pre_hook = nil,
-    post_hook = nil,
-})
+}
+
+return {
+    'numToStr/Comment.nvim',
+    opts = options,
+}

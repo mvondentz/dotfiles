@@ -1,9 +1,4 @@
-local present, treesiter = pcall(require, "nvim-treesitter.configs")
-if not present then
-    return
-end
-
-treesiter.setup({
+local options = {
     ensure_installed = { "go", "lua", "javascript", "json", "toml", "xml", "http", "graphql" },
     sync_install = true,
     auto_install = true,
@@ -13,4 +8,12 @@ treesiter.setup({
         disable = {},
         additional_vim_regex_highlighting = false,
     },
-})
+}
+
+return {
+    "nvim-treesitter/nvim-treesitter",
+    build = function()
+        require("nvim-treesitter.install").update({ with_sync = true })()
+    end,
+    opts = options,
+}

@@ -1,5 +1,0 @@
-require("mvondentz.plugins")
-require("mvondentz.globals")
-require("mvondentz.remaps")
-require("mvondentz.autoload")
-require("mvondentz.colors")

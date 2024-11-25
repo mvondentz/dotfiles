@@ -1,9 +1,4 @@
-local present, oil = pcall(require, "oil")
-if not present then
-    return
-end
-
-oil.setup({
+local options = {
     keymaps = {
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
@@ -43,4 +38,11 @@ oil.setup({
             { "name", "asc" },
         },
     },
-})
+}
+
+return {
+    'stevearc/oil.nvim',
+    opts = options,
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+}

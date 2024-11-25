@@ -1,10 +1,3 @@
-local present, telescope = pcall(require, "telescope")
-if not present then
-    return
-end
-
-vim.g.theme_switcher_loaded = true
-
 local options = {
     defaults = {
         vimgrep_arguments = {
@@ -39,7 +32,7 @@ local options = {
         file_sorter = require("telescope.sorters").get_fuzzy_file,
         file_ignore_patterns = { "node_modules" },
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        -- path_display = { "truncate" }, -- this is breaking
+        path_display = { "truncate" }, -- this was breaking
         winblend = 0,
         border = {},
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
@@ -59,13 +52,23 @@ local options = {
             }
         },
     },
-    extensions_list = { "themes", "terms", "git_worktree" },
+    extensions_list = { "harpoon", "git_worktree" },
 }
 
-telescope.setup(options)
-
-pcall(function()
-    for _, ext in ipairs(options.extensions_list) do
-        telescope.load_extension(ext)
+return {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    dependencies = {
+        {
+            "nvim-lua/plenary.nvim",
+            "BurntSushi/ripgrep",
+        },
+    },
+    opts = options,
+    config = function()
+        local telescope = require("telescope")
+        for _, ext in ipairs(options.extensions_list) do
+            telescope.load_extension(ext)
+        end
     end
-end)
+}

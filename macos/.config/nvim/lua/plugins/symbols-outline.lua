@@ -1,9 +1,4 @@
-local present, so = pcall(require, "symbols-outline")
-if not present then
-    return
-end
-
-local opts = {
+local options = {
     highlight_hovered_item = true,
     show_guides = true,
     auto_preview = false,
@@ -66,5 +61,7 @@ local opts = {
         Fragment = { icon = "", hl = "@constant" },
     },
 }
-
-so.setup(opts)
+return {
+    "simrat39/symbols-outline.nvim",
+    opts = options,
+}
