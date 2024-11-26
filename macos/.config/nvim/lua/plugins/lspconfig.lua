@@ -36,7 +36,7 @@ return {
             settings = {
                 gopls = {
                     --- experimental
-                    gofumpt = true,
+                    -- gofumpt = true,
                     codelenses = {
                         generate = true, -- Enable code lens for generating code
                         gc_details = true,
@@ -53,7 +53,7 @@ return {
                         unusedwrite = true,
                         staticcheck = true,
                         shadow = true,
-                        gofumpt = true,
+                        -- gofumpt = true,
                     },
                     staticcheck = true,
                 },

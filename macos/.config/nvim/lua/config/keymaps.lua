@@ -77,7 +77,7 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>")
 map("n", "<leader>fd", "<cmd>Telescope dap configurations<CR>")
 
--- Find and replace current packeholder
+-- Find and replace current placeholder
 map("n", "<leader>rr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- navigate the quickfix list
