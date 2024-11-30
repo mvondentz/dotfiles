@@ -6,6 +6,7 @@ return {
         config = function()
             vim.g.copilot_no_tab_map = true
             vim.api.nvim_set_keymap("i", "<leader>a", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+            vim.g.copilot_suggestion_delay = 1500 -- it's not working
         end,
     },
     {
@@ -19,7 +20,7 @@ return {
         opts = {
             debug = false,
             window = {
-                width = 0.25,
+                width = 0.35,
             },
         },
         keys = {

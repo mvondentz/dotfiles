@@ -8,9 +8,12 @@ export VISUAL='nvim'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-#ZSH_THEME="avit"
-ZSH_THEME="af-magic"
-#ZSH_THEME="random"
+# ZSH_THEME="avit"
+# ZSH_THEME="gallois"
+# ZSH_THEME="sporty_256"
+ZSH_THEME="zhann"
+# ZSH_THEME="af-magic"
+# ZSH_THEME="random"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true
@@ -56,7 +59,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git themes sudo cp colorize fzf)
+plugins=(git themes colorize fzf)
 
 # User configuration
 source $ZSH/oh-my-zsh.sh
@@ -137,6 +140,7 @@ alias kill='kill -9'
 
 # -----------------------------------------------------------
 alias services='cd ~/code/github.com/EverlongProject/services.git/ && v .'
+alias nvimconf='cd ~/.config/nvim/ && v .'
 # -----------------------------------------------------------
 
 alias xs='cd'
@@ -150,6 +154,8 @@ alias e=exit
 alias q=exit
 
 alias v=nvim
+alias v.=nvim .
+alias vim=nvim
 alias c=clear
 alias clera=clear
 
