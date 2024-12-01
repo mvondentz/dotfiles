@@ -39,7 +39,7 @@ map("i", "<c-k>", "<up>")
 map("i", "<c-l>", "<right>")
 
 -- Terminal
-map("n", "<leader>tt", ":sp<bar>terminal <CR>")
+-- map("n", "<leader>tt", ":sp<bar>terminal <CR>")
 
 --Integration tests
 map("n", "<leader>ti", ":sp<bar>terminal integration %:p ")
@@ -97,3 +97,14 @@ map("n", "<leader>z", "<cmd> ZenMode <CR>")
 vim.keymap.set("n", "<leader>git", vim.cmd.Git);
 
 -- map("n", "<leader>pp", ":call nvim_put(['fmt.Printf(\"%v %v \\n\", \"\",\"\")'], 'l', v:true, v:true) <CR>")
+
+
+-- function _G.set_terminal_keymaps()
+--     local opts = { buffer = 0 }
+--     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+--     vim.keymap.set('t', '<leader>h', [[<Cmd>wincmd h<CR>]], opts)
+--     vim.keymap.set('t', '<leader>j', [[<Cmd>wincmd j<CR>]], opts)
+--     vim.keymap.set('t', '<leader>k', [[<Cmd>wincmd k<CR>]], opts)
+--     vim.keymap.set('t', '<leader>l', [[<Cmd>wincmd l<CR>]], opts)
+-- end
+--
