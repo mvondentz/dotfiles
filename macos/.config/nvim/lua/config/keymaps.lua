@@ -42,11 +42,14 @@ map("i", "<c-l>", "<right>")
 -- map("n", "<leader>tt", ":sp<bar>terminal <CR>")
 
 --Integration tests
-map("n", "<leader>ti", ":sp<bar>terminal integration %:p ")
+-- map("n", "<leader>ti", ":sp<bar>terminal integration %:p ")
+map("n", "<leader>ti", ":TermExec cmd='integration %:p' <CR>")
 -- Run main file
-map("n", "<leader>rf", ":sp<bar>terminal run %:p ")
+-- map("n", "<leader>rf", ":sp<bar>terminal run %:p ")
+map("n", "<leader>rf", ":TermExec cmd='run %:p' <CR>")
 -- Run main dir
-map("n", "<leader>rd", ":sp<bar>terminal rundir %:p ")
+map("n", "<leader>rd", ":TermExec cmd='rundir %:p' <CR>")
+-- map("n", "<leader>rd", ":sp<bar>terminal rundir %:p ")
 
 --Centralize while navigating
 map("n", "<C-d>", "<C-d>zz")
