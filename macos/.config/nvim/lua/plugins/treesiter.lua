@@ -1,5 +1,5 @@
 local options = {
-    ensure_installed = { "go", "lua", "javascript", "json", "toml", "xml", "http", "graphql" },
+    ensure_installed = { "go", "lua", "javascript", "json", "toml", "xml", "http", "graphql", "hurl" },
     sync_install = true,
     auto_install = true,
     ignore_install = {},

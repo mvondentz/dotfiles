@@ -21,3 +21,7 @@ vim.api.nvim_create_user_command(
     end,
     { nargs = 1 }
 )
+
+
+-- better highlight for hurl files
+vim.cmd [[autocmd BufRead,BufNewFile *.hurl setfiletype sh ]]
