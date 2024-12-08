@@ -73,6 +73,13 @@ return {
             desc = "Reset Hunk"
         },
         {
+            "<leader>ghd",
+            function()
+                require("gitsigns").preview_hunk()
+            end,
+            desc = "Reset Hunk"
+        },
+        {
             "<leader>ght",
             function()
                 local gitsigns = require('gitsigns')

@@ -74,6 +74,6 @@ map("n", "<leader>j", "<C-w>j")
 map("n", "<leader>k", "<C-w>k")
 
 -- fugitive
-vim.keymap.set("n", "<leader>git", vim.cmd.Git);
+-- vim.keymap.set("n", "<leader>git", vim.cmd.Git);
 
 -- map("n", "<leader>pp", ":call nvim_put(['fmt.Printf(\"%v %v \\n\", \"\",\"\")'], 'l', v:true, v:true) <CR>")
