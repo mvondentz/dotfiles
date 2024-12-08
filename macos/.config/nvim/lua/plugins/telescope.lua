@@ -1,4 +1,4 @@
-local options = {
+local opts = {
     defaults = {
         vimgrep_arguments = {
             "rg",
@@ -64,10 +64,29 @@ return {
             "BurntSushi/ripgrep",
         },
     },
-    opts = options,
+    keys = {
+        {
+            "<leader>ff",
+            "<cmd>Telescope find_files<CR>",
+        },
+        {
+            "<leader>fg",
+            "<cmd>Telescope live_grep<CR>",
+        },
+        {
+            "<leader>fb",
+            "<cmd>Telescope buffers<CR>",
+        },
+        {
+            "<leader>fr",
+            "<cmd>Telescope oldfiles<CR>",
+        },
+
+    },
+    opts = opts,
     config = function()
         local telescope = require("telescope")
-        for _, ext in ipairs(options.extensions_list) do
+        for _, ext in ipairs(opts.extensions_list) do
             telescope.load_extension(ext)
         end
     end

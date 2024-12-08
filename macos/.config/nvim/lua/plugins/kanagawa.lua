@@ -1,4 +1,4 @@
-local options = {
+local opts = {
     compile = false,  -- enable compiling the colorscheme
     undercurl = true, -- enable undercurls
     commentStyle = { italic = true },
@@ -32,10 +32,9 @@ return {
     "rebelot/kanagawa.nvim",
     priority = 1000,
     lazy = false,
-    opts = options,
+    opts = opts,
     config = function()
-        local kanagawa = require("kanagawa")
-        kanagawa.setup(options)
+        require("kanagawa").setup(opts)
 
         vim.cmd.colorscheme("kanagawa")
         vim.opt.termguicolors = true

@@ -50,7 +50,10 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
- HIST_STAMPS="dd.mm.yyyy"
+HIST_STAMPS="dd.mm.yyyy"
+HISTSIZE=5000
+SAVEHIST=5000
+
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -59,10 +62,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git themes colorize fzf)
-
-# User configuration
-source $ZSH/oh-my-zsh.sh
+plugins=()
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -99,6 +99,13 @@ export GOPROXY=direct
 # export PATH="$GOROOT/bin:$PATH"
 
 export TERMINFO=/usr/share/terminfo
+
+
+# export NVM_DIR=~/.nvm
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+# alias node='unalias node ; unalias npm ; nvm use default ; node $@'
+# alias npm='unalias node ; unalias npm ; nvm use default ; npm $@'
+
 ##-------------------
 ## Personal Aliases
 ##-------------------
@@ -178,20 +185,22 @@ git_add_worktree (){
     g worktree add -b mvondentz/$1 $1
 }
 
-function git-delete-squashed {
-  local mainline=${1:-main}
-  git checkout -q $mainline || return
-  git for-each-ref refs/heads/ --format='%(refname:short)' | while read -r branch; do
-    local mergeBase=$(git merge-base $mainline $branch)
-    if [[ $(git cherry $mainline $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _)) == "-"* ]]; then
-      git branch -D $branch
-    fi
-  done
-}
+# function git-delete-squashed {
+#   local mainline=${1:-main}
+#   git checkout -q $mainline || return
+#   git for-each-ref refs/heads/ --format='%(refname:short)' | while read -r branch; do
+#     local mergeBase=$(git merge-base $mainline $branch)
+#     if [[ $(git cherry $mainline $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _)) == "-"* ]]; then
+#       git branch -D $branch
+#     fi
+#   done
+# }
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/mvondentz/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mvondentz/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/Users/mvondentz/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mvondentz/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/mvondentz/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mvondentz/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/Users/mvondentz/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mvondentz/google-cloud-sdk/completion.zsh.inc'; fi
+
+source $ZSH/oh-my-zsh.sh

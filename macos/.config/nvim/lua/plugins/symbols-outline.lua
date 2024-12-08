@@ -1,4 +1,4 @@
-local options = {
+local opts = {
     highlight_hovered_item = true,
     show_guides = true,
     auto_preview = false,
@@ -63,5 +63,14 @@ local options = {
 }
 return {
     "simrat39/symbols-outline.nvim",
-    opts = options,
+    opts = opts,
+    keys = {
+        {
+            "<leader>fs",
+            function()
+                require("symbols-outline").toggle_outline()
+            end,
+            desc = "Symbols Outline",
+        },
+    },
 }

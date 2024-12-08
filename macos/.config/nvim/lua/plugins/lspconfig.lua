@@ -10,7 +10,6 @@ return {
 
         local on_attach = function(_, bufnr)
             local opts = { noremap = true, silent = true, buffer = bufnr }
-
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -18,15 +17,9 @@ return {
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
             vim.keymap.set({ 'n', 'v' }, '<F4>', vim.lsp.buf.code_action, opts)
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-
-            -- format
-            -- vim.keymap.set("n", "<leader>fo", function()
-            --     vim.lsp.buf.format({ async = true })
-            -- end, opts)
         end
 
         local lsputil = require("lspconfig/util")
-
         local golps = {
             on_attach = on_attach,
             cmd = { 'gopls', '--remote=auto' },
@@ -35,7 +28,6 @@ return {
             root_dir = lsputil.root_pattern("go.work", "go.mod", ".git"),
             settings = {
                 gopls = {
-                    --- experimental
                     -- gofumpt = true,
                     codelenses = {
                         generate = true, -- Enable code lens for generating code
@@ -43,8 +35,6 @@ return {
                         test = true,
                     },
                     semanticTokens = true,
-                    --- experimental
-
                     buildFlags = { "-tags=integration,cse,wkhtmltopdf" },
                     experimentalPostfixCompletions = true,
                     completeUnimported = true,

@@ -2,18 +2,25 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     opts = {},
-    config = function()
-        local flash = require("flash")
+    keys = {
 
-        vim.keymap.set("n", "<leader>s", function()
-            flash.jump({
-                search = { forward = true, wrap = false, multi_window = true },
-            })
-        end)
-        vim.keymap.set("n", "<leader>S", function()
-            flash.jump({
-                search = { forward = false, wrap = false, multi_window = true },
-            })
-        end)
-    end
+        {
+            "<leader>s",
+            function()
+                require("flash").jump({
+                    search = { forward = true, wrap = false, multi_window = true },
+                })
+            end,
+            desc = "Search forward"
+        },
+        {
+            "<leader>S",
+            function()
+                require("flash").jump({
+                    search = { forward = false, wrap = false, multi_window = true },
+                })
+            end,
+            desc = "Search backwards"
+        },
+    },
 }

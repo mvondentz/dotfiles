@@ -1,4 +1,4 @@
-local options = {
+local opts = {
     signs                           = {
         add          = { text = '│' },
         change       = { text = '│' },
@@ -45,9 +45,42 @@ local options = {
     -- },
 }
 
-
-
 return {
     "lewis6991/gitsigns.nvim",
-    opts = options,
+    lazy = false,
+    priority = 100,
+    opts = opts,
+    keys = {
+        {
+            "<leader>ghn",
+            function()
+                require("gitsigns").nav_hunk("next")
+            end,
+            desc = "Next Hunk"
+        },
+        {
+            "<leader>ghp",
+            function()
+                require("gitsigns").nav_hunk("prev")
+            end,
+            desc = "Prev Hunk"
+        },
+        {
+            "<leader>ghr",
+            function()
+                require("gitsigns").reset_hunk()
+            end,
+            desc = "Reset Hunk"
+        },
+        {
+            "<leader>ght",
+            function()
+                local gitsigns = require('gitsigns')
+                gitsigns.toggle_linehl()
+                gitsigns.toggle_word_diff()
+                gitsigns.toggle_numhl()
+            end,
+            desc = "Gitsigns Toggle"
+        },
+    },
 }

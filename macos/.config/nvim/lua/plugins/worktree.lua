@@ -1,5 +1,13 @@
 return {
     'ThePrimeagen/git-worktree.nvim',
+    keys = {
+        {
+            "<leader>fw",
+            function()
+                require('telescope').extensions.git_worktree.git_worktrees()
+            end
+        },
+    },
     config = function()
         local worktree = require("git-worktree")
         worktree.on_tree_change(function(op, metadata)
@@ -11,9 +19,6 @@ return {
                 end
             end
         end)
-
-        local telescope = require("telescope")
-        vim.keymap.set("n", "<leader>fs", function() telescope.extensions.git_worktree.git_worktrees() end)
     end,
 
 }

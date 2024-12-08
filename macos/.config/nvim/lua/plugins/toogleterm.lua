@@ -1,4 +1,4 @@
-local options = {
+local opts = {
     open_mapping = [[<leader>tt]], -- or { [[<c-\>]], [[<c-¥>]] } if you also use a Japanese keyboard.
     start_in_insert = true,
     insert_mappings = true,        -- whether or not the open mapping applies in insert mode
@@ -31,6 +31,18 @@ return {
     {
         'akinsho/toggleterm.nvim',
         version = "*",
-        opts = options,
+        opts = opts,
+        lazy = false,
+        priority = 100,
+        keys = {
+            {
+                "<leader>trf",
+                ":TermExec cmd='run %:p' <CR>",
+            },
+            {
+                "<leader>trd",
+                ":TermExec cmd='rundir %:p' <CR>",
+            },
+        },
     }
 }

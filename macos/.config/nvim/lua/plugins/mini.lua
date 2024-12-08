@@ -19,12 +19,13 @@ local jump_opts = {
     },
 }
 
-
 return {
     'echasnovski/mini.nvim',
     version = false,
     config = function()
         -- better find with extended things
         require('mini.jump').setup({ jump_opts })
+        -- dev icons
+        require('mini.icons').setup()
     end,
 }

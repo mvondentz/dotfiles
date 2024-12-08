@@ -1,4 +1,4 @@
-local options = {
+local opts = {
     keymaps = {
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
@@ -42,7 +42,9 @@ local options = {
 
 return {
     'stevearc/oil.nvim',
-    opts = options,
     lazy = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+        require("oil").setup(opts)
+        vim.keymap.set("n", "<leader>fe", ":Oil<CR>")
+    end,
 }

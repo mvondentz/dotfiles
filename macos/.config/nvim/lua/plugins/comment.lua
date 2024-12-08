@@ -1,4 +1,4 @@
-local options = {
+local opts = {
     padding = true,
     sticky = true,
     ignore = nil,
@@ -18,5 +18,5 @@ local options = {
 
 return {
     'numToStr/Comment.nvim',
-    opts = options,
+    opts = opts,
 }
